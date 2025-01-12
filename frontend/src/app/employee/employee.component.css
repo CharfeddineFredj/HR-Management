@@ -1,0 +1,258 @@
+/* Custom Button */
+#emp-custom-button {
+  background-color: #a92e47;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-decoration: none;
+  margin-top: -20px;
+}
+
+#emp-custom-button .emp-custom-icon {
+  margin-right: 5px;
+  font-size: 1em;
+}
+
+#emp-custom-button span {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+/* Centrer les contrôles de pagination */
+.emp-pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 50px 0;
+}
+
+.emp-row {
+  width: 100%;
+}
+
+.emp-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensure borders are merged correctly */
+  table-layout: relative;
+}
+
+/* En-tête du tableau */
+.emp-table-header th {
+  background-color: #DCDCDC !important;
+  padding: 15px;
+  text-align: center;
+  border-bottom: none; /* No border for header */
+}
+
+/* Corps du tableau */
+.emp-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  padding: 15px;
+  border-bottom: 1px solid #080808; /* Light gray bottom border */
+}
+.emp-table tr:last-child td {
+  border-bottom: 1px solid #090909; /* Assure la bordure inférieure sur la dernière ligne */
+}
+
+/* Spécifiez la largeur des colonnes pour les actions et les longs textes */
+.emp-col-action {
+  width: 200px;
+}
+
+.emp-col-text {
+  font-size: 17px;
+}
+
+.btn {
+  margin: 3px;
+}
+
+.btn-group {
+  white-space: nowrap;
+}
+
+input[type="search"]::-ms-clear {
+  display: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hide {
+  display: none;
+}
+
+.emp-search-bar input.form-control {
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 25px;
+}
+
+#searchInput {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #808080;
+}
+
+input.form-control {
+  box-shadow: 0 2px 5px #C0C0C0;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+input.form-control:focus {
+  box-shadow: 0 4px 8px #C0C0C0;
+}
+
+.emp-custom-search-input {
+  height: 48px;
+}
+
+/* Additional styles for employee component */
+body main#main.emp-main {
+  padding-bottom: 290px;
+}
+
+@media (max-width: 768px) {
+  .main.emp-main {
+    padding-bottom: 100px;
+  }
+}
+
+.emp-employee-image {
+  width: 65px;
+  height: auto;
+  border-radius: 45%;
+  display: block;
+  margin: auto;
+}
+
+.emp-switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 27px;
+}
+
+.emp-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.emp-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: .4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+.emp-status-text {
+  position: absolute;
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.emp-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  z-index: 2;
+}
+
+input:checked + .emp-slider {
+  background-color: green;
+}
+
+input:checked + .emp-slider:before {
+  transform: translateX(57px);
+}
+
+.emp-slider.round {
+  border-radius: 20px;
+}
+
+.emp-slider.round:before {
+  border-radius: 100%;
+  width: 15px;
+  height: 20px;
+}
+
+.emp-custom-export-button,
+.emp-custom-export-buttonpdf {
+  display: flex;
+  align-items: center;
+  background-color: #e2e6ea;
+  border: 1px solid #ced4da;
+  color: black;
+  font-size: 17px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.emp-custom-export-button:hover {
+  background-color: #d4d8dc;
+  color: black;
+}
+
+.emp-custom-export-buttonpdf:hover {
+  background-color: #d4d8dc;
+  color: black;
+}
+
+.emp-export-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.emp-export-iconpdf {
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+
+.emp-special-gray-cell {
+  background-color: #DCDCDC !important;
+  color: #111010;
+  font-weight: bold;
+  text-align: center; /* Centré pour correspondre aux autres cellules */
+  padding: 10px;
+  border-bottom: 1px solid #080808; /* Applique la même bordure que les autres cellules */
+}

@@ -1,0 +1,156 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section profile ">
+    <div  class="container-fluid">
+      <div class="col-xl-4">
+
+        <!--<div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+            <img src="http://localhost:8086/employee/files/{{oneemployee.image}}" alt="Profile" class="rounded-circle">
+            <h2>Kevin Anderson</h2>
+            <h3>Web Designer</h3>
+
+          </div>
+        </div>-->
+
+      </div>
+
+      <div class="col-xl-10">
+
+        <div class="card">
+          <div class="card-body pt-3 al">
+            <!-- Bordered Tabs -->
+
+              <div class="tab-pane fade show active profile-edit pt-3 " id="profile-edit">
+
+                <!-- Profile Edit Form -->
+                <form  [formGroup]="form" enctype="multipart/form-data" (ngSubmit)="modifierEmployee()">
+                  <div class="row mb-3">
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                    <div class="col-md-8 col-lg-9">
+                      <img [src]="imageUrl" width="100px">
+                      <div class="pt-2">
+                        <input type="file" id="profileImage"   (change)="onFileSelected($event)" hidden #fileInput>
+                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" style="margin-right: 7px;" (click)="$event.preventDefault(); fileInput.click();">
+                          <i class="bi bi-upload"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-sm" title="Reset profile image" (click)="$event.preventDefault(); resetImage();">
+                          <i class="bi bi-arrow-clockwise"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row mb-3">
+                    <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" id="firstName" formControlName="firstname">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" id="lastName" formControlName="lastname">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" id="job" formControlName="job">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="department" class="col-md-4 col-lg-3 col-form-label">Department</label>
+                    <div class="col-md-8 col-lg-9">
+                      <select class="form-control" id="department" formControlName="department">
+                        <option value="Informatique">Informatique</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Administratif">Administratif</option>
+                        <option value="Marketing">Marketing</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="dateEmbuche" class="col-md-4 col-lg-3 col-form-label">Hiring date</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="datetime-local" class="form-control" id="dateEmbuche" formControlName="hire_date">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone Number</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" id="phone" formControlName="phone">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="salary" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="text" class="form-control" id="salary" formControlName="salary">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="dateOfBirth" class="col-md-4 col-lg-3 col-form-label">Date of Birth</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input type="date" class="form-control" id="dateOfBirth" formControlName="date_birth">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                    <div class="col-md-8 col-lg-9">
+                      <textarea class="form-control" id="address" formControlName="address" rows="2"></textarea>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="contract_type" class="col-md-4 col-lg-3 col-form-label">Contract Type</label>
+                    <div class="col-md-8 col-lg-9">
+                      <select class="form-control" id="contract_type" formControlName="contract_type">
+                        <option *ngFor="let type of contract_type" [value]="type">
+                          {{ type }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="role" class="col-md-4 col-lg-3 col-form-label">Role</label>
+                    <div class="col-md-8 col-lg-9">
+                        <select class="form-control" id="role" formControlName="role">
+                            <option *ngFor="let role of availableRoles" [value]="role.id">
+                                {{ role.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+
+                  <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </form><!-- End Profile Edit Form -->
+
+              </div>
+
+            </div><!-- End Bordered Tabs -->
+
+          </div>
+        </div>
+
+      </div>
+
+  </section>
+
+</main><!-- End #main -->

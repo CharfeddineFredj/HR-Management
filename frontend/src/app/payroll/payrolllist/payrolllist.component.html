@@ -1,0 +1,110 @@
+<main id="main" class="main paymangement-main">
+  <div class="pagetitle">
+    <h1>Payroll Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Payroll List</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <!-- Search Bar -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <div class="paymangement-search-bar position-relative mt-3 my-3">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 paymangement-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute paymangement-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+
+            <!-- Year, Month Selection and Export Buttons -->
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div class="d-flex align-items-center">
+                <div class="form-group mr-3">
+                  <label for="year">Year:</label>
+                  <input type="number" id="year" [(ngModel)]="year" (change)="onYearOrMonthChange()" class="form-control" />
+                </div>
+                <div class="form-group mx-3">
+                  <label for="month">Month:</label>
+                  <input type="number" id="month" [(ngModel)]="month" (change)="onYearOrMonthChange()" class="form-control" />
+                </div>
+              </div>
+              <!-- Add export buttons -->
+              <div class="d-flex align-items-center">
+                <button class="btn btn-secondary paymangement-custom-export-button mr-2 mx-2 my-3" (click)="downloadCSV()">
+                  <img src="assets/img/Excel.png" alt="Export to Excel" class="paymangement-export-icon">
+                  Export
+                </button>
+                <button class="btn btn-secondary paymangement-custom-export-buttonpdf my-3" (click)="downloadPDF()">
+                  <img src="assets/img/pdf.png" alt="Export to PDF" class="paymangement-export-iconpdf">
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <!-- Display Loading or Error Messages -->
+            <div *ngIf="loading">Calculating payroll...</div>
+            <div *ngIf="error" class="text-danger">{{ error }}</div>
+
+            <!-- Display No Data Message -->
+            <div *ngIf="noDataAvailable && !loading">
+              <p class="paymangement-noData">No payroll data available.</p>
+            </div>
+
+            <!-- Display Results or No Results Message -->
+            <div *ngIf="!noDataAvailable">
+              <div *ngIf="noResultsFound; else resultsAvailable">
+                <p class="paymangement-noData">No results found for your search.</p>
+              </div>
+              <ng-template #resultsAvailable>
+                <table class="paymangement-table datatable">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Registration Number</th>
+                      <th>Employee Name</th>
+                      <th>Total Hours Worked</th>
+                      <th>Total Salary</th>
+                      <th>Overtime Minutes</th>
+                      <th>Undertime Minutes</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let payroll of payrolls | searchpayroll:search | paginate: { itemsPerPage: 5, currentPage: page }; let i = index">
+                      <td>{{i + 1}}</td>
+                      <td>{{payroll.user.username}}</td>
+                      <td>{{ payroll.user.firstname }} {{ payroll.user.lastname }}</td>
+                      <td>{{payroll.totalHoursWorkedBeforeAdjustment}}</td>
+                      <td>{{payroll.totalSalary}}</td>
+                      <td>{{payroll.overtimeMinutes}}</td>
+                      <td>{{payroll.undertimeMinutes}}</td>
+                      <td>
+                        <button (click)="viewPayroll(payroll.id)" class="btn btn-primary paymanagement-btn" title="Show">
+                          <i class="bi bi-eye-fill"></i>
+                        </button>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </ng-template>
+              <pagination-controls class="paymanagement-pagination-controls mt-3" (pageChange)="page = $event"></pagination-controls>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

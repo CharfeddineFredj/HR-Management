@@ -1,0 +1,48 @@
+<main id="main" class="main employee-main">
+
+  <div class="pagetitle">
+    <h1>Time Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Edit Attendance</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="pointageForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" formControlName="username" readonly>
+              </div>
+              <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" class="form-control" formControlName="firstname" readonly>
+              </div>
+              <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" class="form-control" formControlName="lastname" readonly>
+              </div>
+              <div class="form-group">
+                <label for="checkInTime">Check-In Time</label>
+                <input type="datetime-local" id="checkInTime" class="form-control" formControlName="checkInTime" (change)="onCheckInTimeChange()" [ngClass]="{'grey-background': disableBothInputs}" [readonly]="disableInputs">
+              </div>
+              <div class="form-group">
+                <label for="checkOutTime">Check-Out Time</label>
+                <input type="datetime-local" id="checkOutTime" class="form-control" formControlName="checkOutTime" (change)="onCheckOutTimeChange()" [ngClass]="{'grey-background': disableBothInputs}" [readonly]="disableInputs">
+              </div>
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary" [disabled]="disableSaveButton">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

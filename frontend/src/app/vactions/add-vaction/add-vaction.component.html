@@ -1,0 +1,86 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Vacation Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">Vacation Request</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <!-- Profile Edit Form -->
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-10">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="vacationForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="registrationNumber">Registration Number</label>
+                <input type="text" id="registrationNumber" formControlName="registrationNumber" class="form-control">
+                <div *ngIf="vacationForm.get('registrationNumber').invalid && vacationForm.get('registrationNumber').touched" class="text-danger">
+                  Registration Number is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="created_at">Created at</label>
+                <input type="datetime-local" id="created_at" formControlName="created_at" class="form-control" readonly>
+                <div *ngIf="vacationForm.get('created_at').invalid && vacationForm.get('created_at').touched" class="text-danger">
+                  Created at is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="period">Period</label>
+                <input type="number" id="period" formControlName="period" class="form-control" min="1">
+                <div *ngIf="vacationForm.get('period').invalid && vacationForm.get('period').touched" class="text-danger">
+                  Period is required and must be at least 1.
+                </div>
+                <div *ngIf="vacationForm.errors?.['periodMismatch'] && vacationForm.get('period').touched" class="text-danger">
+                  Period must match the difference between start and end dates.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="start_date">Start date</label>
+                <input type="date" id="start_date" formControlName="start_date" class="form-control">
+                <div *ngIf="vacationForm.get('start_date').invalid && vacationForm.get('start_date').touched" class="text-danger">
+                  Start date is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="end_date">End date</label>
+                <input type="date" id="end_date" formControlName="end_date" class="form-control">
+                <div *ngIf="vacationForm.get('end_date').invalid && vacationForm.get('end_date').touched" class="text-danger">
+                  End date is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="type_vacation">Type of vacation</label>
+                <select id="type_vacation" formControlName="type_vacation" class="form-control">
+                  <option value="individual training vacation">Individual Training Vacation</option>
+                  <option value="annual vacation">Annual Vacation</option>
+                  <option value="parental vacation">Parental Vacation</option>
+                  <option value="sick vacation">Sick Vacation</option>
+                  <option value="without pay vacation">Without Pay Vacation</option>
+                </select>
+                <div *ngIf="vacationForm.get('type_vacation').invalid && vacationForm.get('type_vacation').touched" class="text-danger">
+                  Type of vacation is required.
+                </div>
+              </div>
+              <div class="form-group" *ngIf="showMedicalCertificate">
+                <label for="medicalCertificate">Medical Certificate</label>
+                <input type="file" id="medicalCertificate" formControlName="medicalCertificate" class="form-control" (change)="onFileChange($event)">
+                <div *ngIf="vacationForm.get('medicalCertificate').invalid && vacationForm.get('medicalCertificate').touched" class="text-danger">
+                  Medical Certificate is required.
+                </div>
+              </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

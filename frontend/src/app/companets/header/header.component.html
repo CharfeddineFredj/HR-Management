@@ -1,0 +1,118 @@
+<header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="d-flex align-items-center justify-content-between">
+    <a routerLink="/home" routerLinkActive="active" class="logo d-flex align-items-center">
+      <img src="assets/img/Picture1.png" alt="DIGID" id="logo">
+      <span class="d-none d-lg-block" *ngIf="userService.roleMatch(['Administrateur'])">Admin Dashboard</span>
+      <span class="d-none d-lg-block dashboard-text" *ngIf="userService.roleMatch(['Employee'])">Employee Dashboard</span>
+      <span class="d-none d-lg-block dashboard-text" *ngIf="userService.roleMatch(['Responsable'])">Responsable Dashboard</span>
+      <span class="d-none d-lg-block dashboard-text" *ngIf="userService.roleMatch(['Recruteur'])">Recruteur Dashboard</span>
+    </a>
+  </div><!-- End Logo -->
+
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle" href="#">
+          <i class="bi bi-search"></i>
+        </a>
+      </li><!-- End Search Icon-->
+      <li class="nav-item dropdown">
+        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-primary badge-number">{{ getUnreadNotificationCount() + getUnreadPayslipNotificationCount() }}</span>
+        </a><!-- End Notification Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications custom-scroll">
+          <ng-container *ngIf="getUnreadNotificationCount() > 0 || getUnreadPayslipNotificationCount() > 0; else noNotifications">
+            <li class="dropdown-header">
+              <ng-container *ngIf="getUnreadNotificationCount() > 0 && getUnreadPayslipNotificationCount() > 0">
+                You have {{ getUnreadNotificationCount() }} new notifications and {{ getUnreadPayslipNotificationCount() }} new payslips
+              </ng-container>
+              <ng-container *ngIf="getUnreadNotificationCount() > 0 && getUnreadPayslipNotificationCount() === 0">
+                You have {{ getUnreadNotificationCount() }} new notifications
+              </ng-container>
+              <ng-container *ngIf="getUnreadNotificationCount() === 0 && getUnreadPayslipNotificationCount() > 0">
+                You have {{ getUnreadPayslipNotificationCount() }} new payslips
+              </ng-container>
+              
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <ng-container *ngFor="let notification of notifications; let i = index">
+              <li class="notification-item" [class.new]="!notification.read" [class.read]="notification.read">
+                <i class="bi bi-info-circle"></i>
+                <div class="notification-content" (click)="viewAnnouncement(notification.id, i)">
+                  <h4>New Announcement</h4>
+                  <p>{{ notification.message }}</p>
+                  <p class="notification-time">{{ formatTimestamp(notification.timestamp) }}</p>
+                </div>
+                <div *ngIf="!notification.read" class="unread-indicator"></div>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+            </ng-container>
+            <ng-container *ngFor="let notification of payslipNotifications; let i = index">
+              <li class="notification-item" [class.new]="!notification.read" [class.read]="notification.read">
+                <i class="bi bi-file-earmark"></i>
+                <div class="notification-content" (click)="downloadPayslip(notification.downloadLink, i)">
+                  <h4>New Payslip</h4>
+                  <p>{{ notification.message }}</p>
+                  <p class="notification-time">{{ formatTimestamp(notification.timestamp) }}</p>
+                </div>
+                <div *ngIf="!notification.read" class="unread-indicator"></div>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+            </ng-container>
+            <li class="dropdown-footer">
+              <a (click)="navigateToAnnouncements()">Show all notifications</a>
+            </li>
+          </ng-container>
+          <ng-template #noNotifications>
+            <li class="dropdown-header">
+              You have no notifications
+            </li>
+          </ng-template>
+        </ul>
+      </li><!-- End Notification Nav -->
+
+
+
+
+
+
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img [src]="imageUrl ? imageUrl : 'assets/img/userimg.png'" alt="Profile" class="rounded-circle">
+          <h4 class="d-none d-md-block dropdown-toggle ps-2">{{ profile?.firstname }} {{ profile?.lastname }}</h4>
+        </a><!-- End Profile Image Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <li class="dropdown-header">
+            <h6>{{ profile?.firstname }} {{ profile?.lastname }}</h6>
+            <h4>{{ profile?.job }}</h4>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" [routerLink]="['/home/profile', profile?.id]">
+              <i class="bi bi-person"></i>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" [routerLink]="['/home/profile', profile?.id]" [queryParams]="{ tab: 'change-password' }">
+              <i class="bi bi-gear"></i>
+              <span>Account Settings</span>
+            </a>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <a *ngIf="isLoggedIn()" class="dropdown-item d-flex align-items-center" (click)="logout()">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+    </ul>
+  </nav><!-- End Icons Navigation -->
+</header>

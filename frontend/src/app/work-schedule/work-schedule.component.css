@@ -1,0 +1,298 @@
+/* Custom Button */
+#worksh-custom-button {
+  background-color: #a92e47; /* Background color red for the button */
+  color: white; /* Text color white for better contrast */
+  border: none; /* Remove default button border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Padding for better spacing */
+  text-decoration: none; /* Remove underline from link styling */
+  margin-top: -20px;
+}
+
+#worksh-custom-button .worksh-custom-icon {
+  margin-right: 5px; /* Space between the icon and the text */
+  font-size: 1em; /* Adjust icon size if needed */
+}
+
+#worksh-custom-button span {
+  text-align: center;
+  color: white; /* Text color white */
+  text-decoration: none; /* Ensure the text is not underlined */
+}
+
+/* Center pagination controls */
+.worksh-pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Use 100% if you want it to take the full width */
+  height: 50px; /* Adjust height if necessary */
+  padding: 10px 0; /* Add padding for better positioning */
+}
+
+.row {
+  width: 100%; /* Allow horizontal scrolling if the table is too wide */
+}
+
+.worksh-table {
+  width: 100%;
+  table-layout: relative; /* Force table to respect specified column widths */
+}
+
+.worksh-table th, .worksh-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Fixed width for the index column */
+.worksh-col-index {
+  width: 50px; /* Adjust the width as needed */
+}
+
+.btn {
+  margin: 3px;
+}
+
+/* Ensure buttons are always visible */
+.btn-group {
+  white-space: nowrap; /* Prevent buttons from wrapping to the next line */
+}
+
+input[type="search"]::-ms-clear {
+  display: none;
+}
+
+/* Remove the clear button in Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Safari: Remove the inner and outer clear buttons */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hide {
+  display: none;
+}
+
+.worksh-search-bar input.form-control {
+  padding-left: 30px;  /* Adjust based on the size of your search icon */
+  padding-right: 30px; /* Adjust based on the size of your clear icon */
+  border-radius: 25px; /* Rounded corners for the search input */
+}
+
+#searchInput {
+  border-width: 2px; /* Adjust as needed for thickness */
+  border-style: solid; /* Ensuring the border style is solid */
+  border-color: #808080; /* Customize color as needed */
+}
+
+input.form-control {
+  /* Adding a box shadow */
+  box-shadow: 0 2px 5px #C0C0C0; /* Adjust rgba values based on your color preference */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+input.form-control:focus {
+  /* Enhanced shadow on focus, if needed */
+  box-shadow: 0 4px 8px #C0C0C0; /* Stronger shadow on focus */
+}
+
+.worksh-custom-search-input {
+  height: 48px;
+}
+
+/* Additional styles for employee component */
+body main#main.worksh-main {
+  padding-bottom: 270px; /* Adjust based on the actual height of your footer */
+}
+
+@media (max-width: 768px) {
+  .main.worksh-main {
+    padding-bottom: 100px; /* Larger padding for smaller screens if needed */
+  }
+}
+
+.worksh-employee-image {
+  width: 65px; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 45%; /* Optional: make the image circular */
+  display: block; /* Ensures the image is displayed as a block element */
+  margin: auto; /* Center the image within the table cell */
+}
+
+.worksh-table-header th {
+  background-color: #DCDCDC !important; /* Set background color to gray */
+  padding: 15px;
+  height: 50px;
+}
+
+.worksh-switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 27px;
+}
+
+.worksh-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.worksh-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: .4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+}
+
+.worksh-status-text {
+  position: absolute;
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.worksh-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  z-index: 2;
+}
+
+input:checked + .worksh-slider {
+  background-color: green;
+}
+
+input:checked + .worksh-slider:before {
+  transform: translateX(57px); /* Adjust based on width */
+}
+
+.worksh-slider.round {
+  border-radius: 20px;
+}
+
+.worksh-slider.round:before {
+  border-radius: 100%;
+  width: 15px;
+  height: 20px;
+}
+
+.worksh-custom-export-button {
+  display: flex;
+  align-items: center;
+  background-color: #e2e6ea; /* Button background color */
+  border: 1px solid #ced4da; /* Border color */
+  color: black; /* Text color */
+  font-size: 14px; /* Font size */
+  padding: 10px 15px; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background color */
+  margin-bottom: 25px;
+}
+
+.worksh-custom-export-buttonpdf {
+  display: flex;
+  align-items: center;
+  background-color: #e2e6ea; /* Button background color */
+  border: 1px solid #ced4da; /* Border color */
+  color: black; /* Text color */
+  font-size: 14px; /* Font size */
+  padding: 8px 15px; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  margin-bottom: 25px;
+}
+
+.worksh-custom-export-button:hover,
+.worksh-custom-export-buttonpdf:hover {
+  background-color: #d4d8dc; /* Hover background color */
+  color: black; /* Hover text color */
+  border-color: black;
+}
+
+.worksh-export-icon,
+.worksh-export-iconpdf {
+  margin-right: 6px; /* Space between icon and text */
+}
+
+.worksh-export-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.worksh-export-iconpdf {
+  height: 25px;
+  width: 25px;
+}
+
+body main#main.worksh-main {
+  padding-bottom: 270px; /* Adjust based on the actual height of your footer */
+}
+
+.worksh-table-responsive {
+  overflow-y: auto;
+  max-height: 400px; /* Adjust as needed */
+}
+
+.worksh-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.worksh-table th, .worksh-table td {
+  text-align: left !important;
+  padding: 12px !important;
+  vertical-align: middle !important; /* Vertical alignment */
+}
+
+.worksh-table th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+
+.worksh-table thead th {
+  background-color: #f2f2f2;
+  text-align: center; /* Center alignment for table header */
+}
+
+.worksh-table tbody td {
+  text-align: center; /* Center alignment for table body cells */
+}
+
+.worksh-special-gray-cell {
+  background-color: #DCDCDC !important; /* Light gray background */
+  color: #111010; /* Dark gray text */
+  font-weight: bold;
+  text-align: center !important;
+  padding: 10px;
+}

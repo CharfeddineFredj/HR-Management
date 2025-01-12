@@ -1,0 +1,75 @@
+<main id="main" class="main hol-main">
+  <div class="pagetitle">
+    <h1>Schedule Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Holidays</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="hol-section">
+    <div class="hol-container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="holiday-flex-container-v2 mt-4">
+              <!-- Add Work Holiday Button -->
+              <button class="btn btn-link hol-custom-button-v2 d-flex align-items-center" [routerLink]="['/home/addHoliday']"
+                title="add a holiday" id="hol-custom-button-v2">
+                <i class="bi bi-plus-circle-fill hol-custom-icon-v2"></i>
+                <span>Add a Holiday</span>
+              </button>
+
+              <!-- Search Bar -->
+
+            <div class="d-flex justify-content-end align-items-center">
+              <div class="emp-search-bar position-relative mt-2">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 emp-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute emp-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+            </div>
+
+            <!-- Table -->
+            <div *ngIf="holidays.length > 0; else noDataTemplate" class="table-responsive hol-table-responsive">
+              <table class="table hol-table">
+                <thead>
+                  <tr class="hol-table-header">
+                    <th class="hol-col-index">#</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let holiday of holidays | searchHoliday: search | paginate: { itemsPerPage: 5, currentPage: page }; let i = index">
+                    <th scope="row" class="hol-special-gray-cell">{{i+1}}</th>
+                    <td>{{holiday.description}}</td>
+                    <td>{{holiday.date | date: 'yyyy-MM-dd'}}</td>
+                    <td>
+                      <button [routerLink]="['/home/editHoliday', holiday.id]" style="background: none; border: none; padding: 0; margin-top: -5px;" title="Edit">
+                        <i class="bi bi-pencil-fill" style="color: #f0a211; font-size: 25px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ng-template #noDataTemplate>
+              <p>No data available.</p>
+            </ng-template>
+
+            <pagination-controls class="hol-pagination-controls" (pageChange)="page = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

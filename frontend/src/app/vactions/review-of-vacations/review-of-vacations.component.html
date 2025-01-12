@@ -1,0 +1,69 @@
+<main id="main" class="candidate-main">
+  <div class="pagetitle">
+    <h1>vacations</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">Review of vacations</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-12">
+        <div class="d-flex justify-content-end align-items-center mt-3">
+          <div class="search-bar position-relative mt-2">
+            <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+              class="form-control pl-5 pr-5 custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+            <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+              [ngClass]="{'d-none': search.length > 0}"></i>
+            <i class="bi bi-x-lg position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+              [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-link custom-button" [routerLink]="['/home/listvactions']" title="List of vacations" id="custom-button">
+              <i class="bi bi-pencil-square custom-icon"></i>
+              <span>Requests for Vacations</span>
+            </button>
+          </div>
+        </div>
+        <div class="card mt-3 mt-4"> <!-- Added mt-4 class here -->
+          <table *ngIf="groupedVacations && groupedVacations.length > 0; else noReviews">
+            <thead class="rev">
+              <tr>
+                <th id="review">Registration Number</th>
+                <th id="review" (click)="toggleSortDirection()" style="cursor: pointer;">
+                  Year
+                  <i class="bi" [ngClass]="{'bi-arrow-up': sortDirection === 'asc', 'bi-arrow-down': sortDirection === 'desc'}"></i>
+                </th>
+                <th id="review">Days of Vacation</th>
+                <th id="review">Consumed Days of Vacation</th>
+                <th id="review">Remaining Days of Vacation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vacation of groupedVacations | searchReviewVaction:search | paginate: { itemsPerPage: 5, currentPage: e };">
+                <td>{{ vacation.registrationNumber }}</td>
+                <td>{{ vacation.year }}</td>
+                <td>{{ vacation.days_vaction }}</td>
+                <td [ngClass]="{
+                  'highlight-red': vacation.spent_days_vaction === 24,
+                  'highlight-green': vacation.spent_days_vaction < 24
+                }">{{ vacation.spent_days_vaction }}</td>
+                <td>{{ vacation.remaining_days_vaction }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noReviews>
+            <p class="no-reviews">No review of vacations found.</p>
+          </ng-template>
+          <pagination-controls class="pagination-controls" (pageChange)="e = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

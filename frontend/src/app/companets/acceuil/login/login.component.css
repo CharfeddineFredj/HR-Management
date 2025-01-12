@@ -1,0 +1,411 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+
+/* Button style */
+.btn-login {
+  background-color: #383838 !important;
+  color: #fff;
+  border: none;
+  padding: 10x 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 21px;
+
+}
+
+/* Hover style for button */
+.btn-login:hover {
+  background-color: #585858 !important; /* Darker shade for hover */
+}
+
+
+
+/* Style for the form container */
+.reset-password-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* General input field style */
+.reset-password-form input[type="text"],
+.reset-password-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+/* Input field focus style */
+.reset-password-form input[type="text"]:focus,
+.reset-password-form input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Label style */
+.reset-password-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Password strength bar container */
+.password-strength {
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+/* Password strength bar */
+.strength-bar {
+  height: 100%;
+  width: 0;
+  background-color: lightgray;
+  border-radius: 5px;
+  transition: width 0.5s;
+}
+
+.weak {
+  width: 33%;
+  background-color: red;
+}
+
+.medium {
+  width: 66%;
+  background-color: yellow;
+}
+
+.strong {
+  width: 100%;
+  background-color: green;
+}
+
+/* Password strength text */
+.password-strength-text {
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+/* Button style */
+.reset-password-btn {
+  background-color: #060606;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+/* Style for enabled button (strong password) */
+.reset-password-btn:enabled {
+  opacity: 1;
+}
+
+/* Style for disabled button */
+.reset-password-btn:disabled {
+  background-color: #6c757d; /* Grey background for disabled state */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+
+
+/* Tooltip style */
+.password-requirements-tooltip {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1000;
+  width: 300px;
+  margin-top: -32px;
+}
+
+.password-requirements-tooltip .tooltip-arrow {
+  position: absolute;
+  top: -20px; /* Adjust based on the size of the arrow */
+  left: 20px; /* Adjust to align with the input field */
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #f8f9fa;
+  z-index: -1;
+}
+
+.password-requirements-tooltip .tooltip-inner {
+  padding: 5px;
+}
+
+.password-requirements-tooltip ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password-requirements-tooltip li {
+  padding: 5px 0;
+  color: #dc3545;
+}
+
+.password-requirements-tooltip li.met {
+  color: #28a745;
+}
+
+.position-relative {
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 450px) {
+    .h-custom {
+      height: auto; /* Set height to auto on smaller screens */
+      /* height: 100M; */
+    }
+  }
+
+
+/* Navbar CSS */
+.nav-item{color:white;
+    margin-left: 2.5rem ;
+    font-size: 1rem;
+
+}
+
+.nav-link {
+  color: white; /* Default link color */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  font-size: 1.5rem;
+}
+
+.nav-link.active {
+  /* Styles pour le lien actif */
+  color: #9a9a1d; /* Exemple de couleur de texte pour le lien actif */
+}
+
+.nav-link:hover {
+  color: #9a9a1d; /* Color when the link is active or hovered over */
+}
+
+
+
+.navbar{
+    color: white;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 3rem;
+    height: 87px;
+}
+
+.footer {
+    /* margin-top: auto;
+    position: relative;
+    bottom: 0;
+    width: 100%; */
+    /* height: 40px; */
+    /* background-color: black;
+    text-align: center;
+    color: white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 1rem; */
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 1rem;
+    z-index: 999; /* Ensure the footer stays above other content */
+}
+.login-form {
+    margin-bottom: 100px; /* Adjust margin to ensure login form doesn't overlap with footer */
+}
+@media screen and (max-width: 768px) {
+    .footer {
+        position: fixed; /* Change to fixed position on smaller screens */
+        /* height: 100%; */
+    }
+}
+.forgot-password-message {
+  margin-top: -1rem; /* Adjust margin-top as needed */
+  margin-bottom: 1rem;
+  font-size: 16px; /* Adjust font size as needed */
+  font-family: sans-serif;
+}
+
+.forgot-password-link {
+  cursor: pointer; /* Show pointer cursor on hover */
+  color: #007bff; /* Change link color as needed */
+  text-decoration: none; /* Underline the link */
+}
+
+.forgot-password-link:hover {
+  color: #66b3ff; /* Remove underline when hovering */
+}
+
+
+
+/* Style général du formulaire */
+.login-form form {
+  background-color: #f8f9fa; /* Couleur de fond du formulaire */
+  padding: 20px; /* Espacement intérieur du formulaire */
+  border-radius: 10px; /* Coins arrondis du formulaire */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Ombre légère autour du formulaire */
+}
+
+/* Style des champs de saisie */
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"] {
+  width: 100%; /* Largeur du champ de saisie */
+  padding: 10px; /* Espacement interne du champ de saisie */
+  margin-bottom: 15px; /* Espacement entre les champs de saisie */
+  border: 1px solid #ced4da; /* Bordure du champ de saisie */
+  border-radius: 5px; /* Coins arrondis du champ de saisie */
+}
+
+/* Style du bouton de soumission */
+.login-form button[type="submit"] {
+  width: 45%; /* Largeur du bouton */
+  padding: 10px; /* Espacement interne du bouton */
+  border: none; /* Pas de bordure */
+  border-radius: 20px; /* Coins arrondis du bouton */
+  background-color: #343a40; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  margin-top: -50px;
+}
+
+/* Style des liens de texte */
+.login-form a {
+  color: #007bff; /* Couleur du lien */
+  text-decoration: none; /* Pas de soulignement */
+}
+
+/* Style du texte d'erreur */
+.text-danger {
+  color: #dc3545; /* Couleur du texte d'erreur */
+  font-size: 0.875rem; /* Taille de la police du texte d'erreur */
+}
+
+/* Style du formulaire de récupération de mot de passe et du formulaire de réinitialisation du mot de passe (similaire au formulaire de connexion) */
+.forgot-password-form form,
+.reset-password-form form {
+  /* Styles similaires au formulaire de connexion */
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Style des boutons dans le formulaire de récupération de mot de passe et le formulaire de réinitialisation du mot de passe */
+.forgot-password-form button[type="submit"]{
+  /* Styles similaires au bouton de soumission du formulaire de connexion */
+  width: 40%;
+  max-width: 200px; /* Limite la largeur maximale à 200 pixels */
+  padding: 10px !important;
+  border: none;
+  border-radius: 20px;
+  background-color:  #343a40 !important;
+  color: #fff !important;
+  cursor: pointer; /* Curseur pointer pour indiquer que le bouton est cliquable */
+  transition: color 0.3s; /* Animation de transition pour la couleur du texte */
+  /* Réinitialiser la couleur du texte */
+}
+/* Change la couleur du texte lorsqu'on survole le bouton */
+.forgot-password-form button[type="submit"]:hover {
+    background-color:  #23282c !important; /* Couleur du texte lorsqu'on survole le bouton */
+  }
+.reset-password-btn {
+  width: 40%;
+  padding: 10px !important;
+  border: none;
+  border-radius: 20px !important;
+  background-color:  #343a40 !important;
+  color: #fff;
+  cursor: pointer; /* Curseur pointer pour indiquer que le bouton est cliquable */
+  transition: color 0.3s; /* Animation de transition pour la couleur du texte */
+}
+
+/* Style du bouton pour voir le mot de passe */
+.login-form .input-group button {
+  border: none;
+  background-color: transparent;
+  color: #495057;
+  cursor: pointer;
+}
+
+/* Espacement entre le champ de saisie et le bouton pour voir le mot de passe */
+.login-form .input-group {
+  position: relative;
+
+}
+
+.login-form .input-group button {
+  position: absolute;
+  right: 2px;
+  top: 40%;
+  transform: translateY(-50%);
+}
+/* Style pour agrandir et centrer l'icône */
+.icon {
+  font-size: 1.2rem; /* Taille de l'icône */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style pour un bouton avec une taille normale et des coins arrondis */
+
+
+/* Style pour définir la taille du texte du lien "Cancel" */
+.cancel-link {
+  font-size: 1rem; /* Taille du texte */
+}
+#logo {
+  max-width: 55px;
+  max-height: 55px;
+  filter: invert(1) brightness(2) contrast(2); /* Makes the image white */
+  margin-right: 25px; /* Adds space between the logo and the Home link */
+}
+
+.logo-link {
+  display: inline-block;
+  cursor: pointer; /* Change cursor to pointer when hovering over the logo */
+}

@@ -1,0 +1,60 @@
+<main id="main" class="candidate-main">
+  <div class="pagetitle">
+    <h1>Vacation Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">List of Vacation Requests</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <!-- Profile Edit Form -->
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-10">
+        <table class="styled-table" *ngIf="filteredRequests && filteredRequests.length > 0; else noRequests">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>IMAGE</th>
+              <th>REGISTER NUMBER</th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of filteredRequests | paginate: { itemsPerPage: 4, currentPage: currentPage }; let i = index">
+              <th scope="row" class="special-gray-cells">{{i+1}}</th>
+              <td>
+                <img [src]="getImageUrl(request.imageUrl)" alt="User Image" class="user-image1">
+              </td>
+              <td class="registrationNumberVac">{{ request.registrationNumber }}</td>
+              <td [ngClass]="{
+                          'approved': request.status === 'approved',
+                          'pending': request.status === 'pending',
+                          'rejected': request.status === 'rejected'
+                        }">
+                          {{ request.status }}
+              </td>
+              <td>
+                <button class="action-butt view-button" (click)="viewRequest(request)">
+                  <i class="bi bi-eye-fill"></i>
+                </button>
+                <button class="action-butt delete-button" (click)="deleteRequest(request.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination-container">
+          <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+        </div>
+        <ng-template #noRequests>
+          <p>No vacation requests found.</p>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+</main>

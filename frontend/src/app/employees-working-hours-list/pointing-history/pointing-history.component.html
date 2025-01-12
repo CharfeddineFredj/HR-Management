@@ -1,0 +1,84 @@
+<!-- pointage-history.component.html -->
+<main id="main" class="main history-main">
+
+  <div class="pagetitle">
+    <h1>Time Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Attendance History</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="history-section">
+    <div class="history-container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <!-- Search Bar -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <div class="history-search-bar position-relative mt-2">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 history-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute history-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <div class="d-flex align-items-center">
+                <button class="btn btn-secondary history-custom-export-button" title="Export to Excel" (click)="downloadCSV()">
+                  <img src="assets/img/Excel.png" class="history-export-icon">
+                  Export
+                </button>
+                <button class="btn btn-secondary history-custom-export-buttonpdf" title="Export to PDF" (click)="downloadPDF()">
+                  <img src="assets/img/pdf.png" class="history-export-iconpdf">
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <!-- Employee Pointing List Table -->
+            <div *ngIf="pointages && pointages.length; else noData">
+              <table class="history-table datatable">
+                <thead>
+                  <tr class="history-table-header">
+                    <th class="history-col-index">#</th>
+                    <th>Registration Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Check-In Time</th>
+                    <th>Check-Out Time</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pointage of pointages  |  searchPointage: search | sortPointage:'checkInTime':'desc' | paginate: { itemsPerPage: 5, currentPage: page }; let i = index">
+                    <th scope="row" class="history-special-gray-cell">{{i+1}}</th>
+                    <td>{{ pointage.user.username }}</td>
+                    <td>{{ pointage.user.firstname }}</td>
+                    <td>{{ pointage.user.lastname }}</td>
+                    <td>{{ pointage.checkInTime | date: 'short' }}</td>
+                    <td>{{ pointage.checkOutTime | date: 'short' }}</td>
+                    <td>
+                      <span class="history-status-circle" *ngIf="pointage.completed" title="completed">🟢</span>
+                      <span class="history-status-circle" *ngIf="!pointage.completed" title="Not Completed">🔴</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ng-template #noData>
+              <p>No data available.</p>
+            </ng-template>
+            <pagination-controls class="history-pagination-controls" (pageChange)="page = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

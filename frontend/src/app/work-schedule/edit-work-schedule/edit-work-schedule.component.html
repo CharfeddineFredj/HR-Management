@@ -1,0 +1,62 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Schedule Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item active">Edit work schedule</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+              <div formGroupName="user">
+                <div class="form-group">
+                  <label for="username">Registration Number</label>
+                  <input type="text" id="username" formControlName="username" class="form-control readonly-field" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="firstname">First Name</label>
+                  <input type="text" id="firstname" formControlName="firstname" class="form-control readonly-field" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" id="lastname" formControlName="lastname" class="form-control readonly-field" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="scheduledCheckInTime">Scheduled Check-In Time</label>
+                <input type="time" id="scheduledCheckInTime" formControlName="scheduledCheckInTime" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="scheduledCheckOutTime">Scheduled Check-Out Time</label>
+                <input type="time" id="scheduledCheckOutTime" formControlName="scheduledCheckOutTime" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="workDays">Select Work Days and Overtime Declaration</label>
+                <div class="checkbox-group" *ngFor="let day of daysOfWeek" style="display: flex; align-items: center;">
+                  <label class="checkbox-label" style="margin-right: 10px;">
+                    <input type="checkbox" [value]="day" (change)="toggleDay(day)" [checked]="selectedDays.has(day)">
+                    {{ day }}
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" [checked]="isDayDeclared(day)" (change)="toggleDeclared(day)">
+                    Declared
+                  </label>
+                </div>
+              </div>
+              <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

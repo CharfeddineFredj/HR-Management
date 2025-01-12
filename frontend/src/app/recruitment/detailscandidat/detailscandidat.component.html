@@ -1,0 +1,83 @@
+<main id="main">
+  <app-loader [isLoading]="isLoading"></app-loader>
+  <div class="pagetitle">
+    <h1>Candidate Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Candidate Details</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section" *ngIf="candidate">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container">
+          <div class="left-panel">
+            <i class="bi bi-person-square" style="color: #454846; font-size: 130px;"></i>
+            <h1>{{ candidate.firstname }} {{ candidate.lastname }}</h1>
+            <img src="assets/img/ref.png" alt="Subject Reference" class="subject-ref-image">
+            <p>Subject reference: {{ candidate.subject_ref }} </p>
+          </div>
+
+          <div class="right-panel">
+            <div class="section">
+              <h3>CIVILITY</h3>
+              <div class="section-content scrollable">
+                <p>Email: <span>{{ candidate.email }}</span></p>
+                <p>Phone: <span>{{ candidate.phone }}</span></p>
+                <p>Date of birth: <span>{{ candidate.date_birth }}</span></p>
+              </div>
+            </div>
+            <div class="section">
+              <h3>STUDY LEVEL</h3>
+              <div class="section-content scrollable">
+                <p>Level: <span>{{ candidate.level }}</span></p>
+                <p>Diploma title: <span>{{ candidate.diplomatitle }}</span></p>
+                <p>Engineering school: <span>{{ candidate.university }}</span></p>
+              </div>
+            </div>
+            <div class="section">
+              <h3>EXPERIENCE</h3>
+              <div class="section-content scrollable">
+                <p>Years experience: <span>{{ candidate.yearsexperience }}</span></p>
+                <p>
+                  Experiences:
+                  <span class="experience-text" (click)="toggleFullText()">
+                    {{ isFullTextVisible ? candidate.experiences : truncatedExperience }}
+                    <span *ngIf="!isFullTextVisible" class="more">...more</span>
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="section">
+              <h3>ATTACHED DOCUMENTS</h3>
+              <div class="section-content scrollable">
+                <p>
+                  CV:
+                  <a [href]="completeUrl(candidate.cv)" [attr.download]="generateFileName(candidate.firstname, candidate.lastname) + '.pdf'" target="_blank" rel="noopener noreferrer">
+                    {{ generateFileName(candidate.firstname, candidate.lastname) }}
+                    <img src="assets/img/downloadicon.png" alt="Download Icon" style="width: 22px; height: 22px; filter: invert(29%) sepia(79%) saturate(2562%) hue-rotate(179deg) brightness(93%) contrast(87%);">
+                  </a>
+                </p>
+                <p>
+                  Cover letter:
+                  <a [href]="completeUrl(candidate.coverletter)" [attr.download]="generateFileName(candidate.firstname, candidate.lastname) + '_CoverLetter.pdf'" target="_blank" rel="noopener noreferrer">
+                    {{ generateFileName(candidate.firstname, candidate.lastname) + '_CoverLetter' }}
+                    <img src="assets/img/downloadicon.png" alt="Download Icon" style="width: 22px; height: 22px; filter: invert(29%) sepia(79%) saturate(2562%) hue-rotate(179deg) brightness(93%) contrast(87%);">
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="actions mt-5">
+              <button class="confirm" (click)="sendConfirmationEmail()">Send an email of confirmation</button>
+              <button class="reject" (click)="sendRejectionEmail()">Send an email of rejection</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

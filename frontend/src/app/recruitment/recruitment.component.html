@@ -1,0 +1,95 @@
+<main id="main" class="main rec-main">
+  <!-- Page Title -->
+  <div class="pagetitle">
+    <h1>Candidate Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Candidate List</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="rec-section">
+    <div class="rec-row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-end align-items-center mt-2">
+              <div class="rec-search-bar position-relative mt-2">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 rec-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute rec-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+
+            <!-- Add Employee Button -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <button class="btn btn-secondary rec-custom-export-button" (click)="downloadCSV()">
+                  <img src="assets/img/Excel.png" alt="Export to Excel" class="rec-export-icon">
+                  Export
+                </button>
+                <button class="btn btn-secondary rec-custom-export-buttonpdf" (click)="downloadPDF()">
+                  <img src="assets/img/pdf.png" alt="Export to PDF" class="rec-export-iconpdf">
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="listcandidate && listcandidate.length > 0; else noData">
+              <table class="rec-table datatable mt-2">
+                <thead>
+                  <tr class="rec-table-header">
+                    <th scope="col" class="rec-col-index">#</th>
+                    <th scope="col" class="rec-col-text">First Name</th>
+                    <th scope="col" class="rec-col-text">Last Name</th>
+                    <th scope="col" class="rec-col-text">Email</th>
+                    <th scope="col" class="rec-col-text">CV</th>
+                    <th scope="col" class="rec-col-text">Status</th>
+                    <th scope="col" class="rec-col-action">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of listcandidate | candidat:search | paginate: { itemsPerPage: 5, currentPage: e }; let i = index">
+                    <th scope="row" class="rec-special-gray-cell">{{i+1}}</th>
+                    <td class="rec-col-text">{{c.firstname}}</td>
+                    <td class="rec-col-text">{{c.lastname}}</td>
+                    <td class="rec-col-text">{{c.email}}</td>
+                    <td class="rec-col-text">
+                      <a [href]="c.cv" [attr.download]="generateFileName(c.firstname, c.lastname) + '.pdf'" target="_blank" rel="noopener noreferrer">
+                        {{generateFileName(c.firstname, c.lastname)}}
+                        <img src="assets/img/downloadicon.png" alt="Download Icon" style="width: 22px; height: 22px; filter: invert(29%) sepia(79%) saturate(2562%) hue-rotate(179deg) brightness(93%) contrast(87%);">
+                      </a>
+                    </td>
+                    <td [ngStyle]="{
+                      'color': c.status === 'Pending' ? 'orange' : c.status === 'Confirmed' ? 'green' : c.status === 'Rejected' ? 'red' : 'black',
+                      'font-size': '18px'
+                    }" class="rec-col-text">{{ c.status }}</td>
+                    <td class="rec-col-action">
+                      <button class="btn btn-info mx-2" aria-label="View details" style="background: none; border: none; padding: 0;">
+                        <i class="bi bi-eye-fill" [routerLink]="['/home/detailscandidat', c.id]" style="color: #454846; font-size: 27px;" title="Show"></i>
+                      </button>
+                      <button class="btn btn-danger" aria-label="Delete" (click)="deletecandidate(c.id)" style="background: none; border: none; padding: 0; ">
+                        <i class="bi bi-trash-fill" style="color: red; font-size: 25px;" title="Delete"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ng-template #noData>
+              <p>No data available.</p>
+            </ng-template>
+
+            <pagination-controls class="rec-pagination-controls mt-4" (pageChange)="e = $event"></pagination-controls>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

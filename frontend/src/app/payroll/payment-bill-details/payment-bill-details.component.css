@@ -1,0 +1,148 @@
+.main.details-main {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 0;
+}
+
+.card.larger-card {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: none;
+  background-color: #ffffff;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.card-body {
+  padding: 30px;
+  position: relative;
+}
+
+.paystub {
+  max-width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header-content h1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.header-content .edit-date {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.details .left,
+.details .right {
+  width: 45%;
+}
+
+.details .left p,
+.details .right p {
+  font-size: 16px;
+}
+
+.details .left p span.label,
+.details .right p span.label {
+  font-weight: bold;
+  color: #343a40;
+  margin-right: 10px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th,
+.table td {
+  border: 1px solid #131212;
+  padding: 8px;
+}
+
+.table th {
+  background-color: #dbdbdb;
+  font-weight: bold;
+}
+
+.table td span.label {
+  font-weight: bold;
+}
+
+.footer-paiement {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-paiement p {
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.bill-btn {
+  background-color: #3c7fe4; /* Couleur de fond */
+  border: none; /* Supprimer la bordure */
+  color: white; /* Couleur du texte */
+  padding: 14px 25px; /* Espacement interne */
+  text-align: center; /* Alignement du texte */
+  text-decoration: none; /* Supprimer la décoration du texte */
+  display: inline-block; /* Affichage en ligne */
+  font-size: 16px; /* Taille de la police */
+  margin-top: 20px; /* Espacement au-dessus du bouton */
+  cursor: pointer; /* Curseur pointeur */
+  border-radius: 12px; /* Bords arrondis */
+}
+
+.bill-btn:hover {
+  background-color: #233fb0; /* Couleur de fond au survol */
+}
+.export-iconpdf {
+  height: 25px;
+  width: 30px;
+  margin-right: 5px; /* Space between icon and text */
+}
+/* Define the disabled button style */
+.bill-btn:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+
+
+@media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 22px;
+  }
+
+  .header-content .edit-date,
+  .details p,
+  .footer-paiement p {
+    font-size: 14px;
+  }
+
+  .details .left p,
+  .details .right p {
+    font-size: 14px;
+  }
+
+
+
+
+
+}

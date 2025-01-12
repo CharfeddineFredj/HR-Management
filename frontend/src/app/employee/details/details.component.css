@@ -1,0 +1,28 @@
+.role-item {
+    margin-bottom: 5px;
+  }
+
+  .export-iconpdf {
+    height: 25px;
+    width: 30px;
+    margin-right: 5px; /* Space between icon and text */
+  }
+
+  .details-btn {
+    background-color: #3c7fe4; /* Couleur de fond */
+    border: none; /* Supprimer la bordure */
+    color: white; /* Couleur du texte */
+    padding: 14px 25px; /* Espacement interne */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Supprimer la décoration du texte */
+    display: inline-block; /* Affichage en ligne */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Marges */
+    cursor: pointer; /* Curseur pointeur */
+    border-radius: 12px; /* Bords arrondis */
+  }
+
+  /* Styles supplémentaires pour l'état au survol (hover) */
+  .details-btn:hover {
+    background-color: #233fb0; /* Couleur de fond au survol */
+  }

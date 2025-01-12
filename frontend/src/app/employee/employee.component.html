@@ -1,0 +1,107 @@
+<main id="main" class="main emp-main" *ngIf="isRoleAllowed(['Administrateur', 'Responsable'])">
+  <!-- Page Title -->
+  <div class="pagetitle">
+    <h1>User Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">User List</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="emp-section">
+    <div class="emp-row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <!-- Search Bar -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <div class="emp-search-bar position-relative mt-2">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 emp-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute emp-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+
+            <!-- Add Employee Button -->
+            <div class="d-flex justify-content-between align-items-center mb-2" *ngIf="isRoleAllowed(['Administrateur','Responsable'])">
+              <div class="d-flex align-items-center">
+                <button class="btn btn-link emp-custom-button" [routerLink]="['/home/addemployee']" title="Add new user" id="emp-custom-button">
+                  <i class="bi bi-plus-circle-fill emp-custom-icon"></i>
+                  <span>Add new user</span>
+                </button>
+                <button class="btn btn-secondary emp-custom-export-button" (click)="downloadCSV()">
+                  <img src="assets/img/Excel.png" alt="Export to Excel" class="emp-export-icon">
+                  Export
+                </button>
+                <button class="btn btn-secondary emp-custom-export-buttonpdf" (click)="downloadPDF()">
+                  <img src="assets/img/pdf.png" alt="Export to PDF" class="emp-export-iconpdf">
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="listemployee && listemployee.length > 0; else noData">
+              <!-- Employee Table -->
+              <table class="emp-table datatable" *ngIf="isRoleAllowed(['Administrateur', 'Responsable'])">
+                <thead>
+                  <tr class="emp-table-header">
+                    <th scope="col" class="emp-col-text">#</th>
+                    <th scope="col" class="emp-col-text">Image</th>
+                    <th scope="col" class="emp-col-text">Employee Name</th>
+                    <th scope="col" class="emp-col-text">Registration Number</th>
+                    <th scope="col" class="emp-col-text">Department</th>
+                    <th scope="col" class="emp-col-text">Job</th>
+                    <th scope="col" class="emp-col-text">Phone</th>
+                    <th scope="col" class="emp-col-text">Status</th>
+                    <th scope="col" class="emp-col-action">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of listemployee | rechercheEmployee:search | paginate: { itemsPerPage: 5, currentPage: e }; let i = index">
+                    <th scope="row" class="emp-special-gray-cell">{{i+1}}</th>
+                    <td class="emp-col-text">
+                      <img src="http://localhost:8086/employee/files/{{e.image}}" alt="{{e.firstname}} {{e.lastname}}" class="emp-employee-image">
+                    </td>
+                    <td class="emp-col-text">{{e.firstname}} {{e.lastname}}</td>
+                    <td class="emp-col-text">{{e.username}}</td>
+                    <td class="emp-col-text">{{e.department}}</td>
+                    <td class="emp-col-text">{{e.job}}</td>
+                    <td class="emp-col-text">{{e.phone}}</td>
+                    <td class="emp-col-text">
+                      <label class="emp-switch" *ngIf="isRoleAllowed(['Administrateur'])">
+                        <input type="checkbox" [checked]="e.status" (click)="toggleStatus(e, $event)">
+                        <span class="emp-slider round">
+                          <span class="emp-status-text">{{ e.status ? 'Enable' : 'Disabled' }}</span>
+                        </span>
+                      </label>
+                      <span *ngIf="!isRoleAllowed(['Administrateur'])">{{ e.status ? 'Enabled' : 'Disabled' }}</span>
+                    </td>
+
+                    <td class="emp-col-action">
+                      <button class="btn btn-info" aria-label="View details" style="background: none; border: none; padding: 0;  margin-left: 20px;" title="Show">
+                        <i class="bi bi-eye-fill" [routerLink]="['/home/detailsemployee', e.id]" style="color:  #454846; font-size: 30px;"></i>
+                      </button>
+                      <button class="btn btn-warning" aria-label="Edit" [routerLink]="['/home/editemployee', e.id]" style="background: none; border: none; padding: 0; margin-left: 15px;" title="Edit">
+                        <i class="bi bi-pencil-fill" style="color:  #f0a211; font-size: 25px;"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ng-template #noData>
+              <p>No data available.</p>
+            </ng-template>
+            <pagination-controls class="emp-pagination-controls" (pageChange)="e = $event"></pagination-controls>
+            <!-- End Employee Table -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

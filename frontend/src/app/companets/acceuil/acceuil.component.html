@@ -1,0 +1,159 @@
+<body>
+    <section className="nav">
+      <nav class="navbar navbar-expand-sm border-bottom border-body" data-bs-theme="dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a routerLink="/acceuil" class="logo-link">
+                <img src="assets/img/Picture1.png" alt="DIGID" id="logo">
+            </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/acceuil" routerLinkActive="active" class="nav-link"  [class.disabled]="isActive('/acceuil')"
+                [style.pointerEvents]="isActive('/acceuil') ? 'none' : 'auto'"
+                [style.cursor]="isActive('/acceuil') ? 'not-allowed' : 'pointer'">Home</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/candidat" routerLinkActive="active" class="nav-link">Espace candidat</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item" style="margin-right: 4rem;">
+                <a *ngIf="!isLoggedIn()" routerLink="/login" routerLinkActive="active" class="nav-link">Login</a>
+                <a *ngIf="isLoggedIn()" routerLink="/home" routerLinkActive="active" class="nav-link">Dashboard</a>
+            </li>
+        </ul>
+    </nav>
+    </section>
+
+    <!-- <div class="container"> -->
+
+        <router-outlet></router-outlet>
+        <!-- </div> -->
+
+        <ngb-carousel [interval]="3000" [keyboard]="true" [pauseOnHover]="true">
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img style="width: 100vw; height: 610px;" src="../assets/2.jpg" alt="Inspiring leadership innovation slide" />
+            </div>
+            <div class="carousel-caption">
+              <h1 id="p1">Igniting the Future of Leadership</h1>
+              <p>Transform your workforce with our cutting-edge HR platform.</p>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+              <img style="width: 100vw; height: 610px;" src="../assets/1.jpg" alt="Next slide" />
+            </div>
+            <div class="carousel-caption">
+              <h3 id="p1">Streamline, Innovate, Succeed</h3>
+              <p>Optimize your HR operations and drive team excellence.</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+
+
+
+
+    <!-- Skills -->
+    <section id="skills" class="section-2 odd highlights image-right counter skills featured">
+        <br><br>
+        <div class="divMain container">
+            <div class="container c1 text">
+                <h1 class="text"> Techknowlogy Stack Used:</h1>
+                <br>
+                <ul class="category" id="t1">
+                    <li>Backend Techknowlogy
+                        <ul class="subcategory">
+                            <li>Spring Boot</li>
+                        </ul>
+                    </li>
+                    <li>Frontend Techknowlogy
+                        <ul class="subcategory">
+                            <li>Angular</li>
+                        </ul>
+                    </li>
+                    <li>Database Techknowlogy
+                        <ul class="subcategory">
+                            <li>MySQL</li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class=" image">
+                <img src="../assets/about-5.webp" class="fit-image" alt="Fit Image">
+            </div>
+        </div>
+        <br><br>
+    </section>
+
+
+
+    <section class="about ">
+        <br><br>
+        <div class="container">
+            <div class="about-section">
+                <h1>About Us Page</h1>
+                <br>
+                <!-- <p>Some text about who we are and what we do.</p> -->
+                <p>Effectively and systematically manage and document the pertinent details and information of your
+                    employees to ensure a thorough and accurate record-keeping system within your organizational
+                    framework.</p>
+            </div>
+            <br><br><br>
+            <h1 style="text-align:center; font-weight:bold; font-size:36px; color:#333; text-transform:uppercase; letter-spacing:2px;">
+              Our Team
+            </h1>
+            <br><br>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <img src="../assets/team1.jpg" alt="Jane" style="width:100%">
+                        <div class="container">
+                            <h2>Jane Doe</h2>
+                            <p class="title">CEO & Founder</p>
+                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                            <p>jane&#64;example.com</p>
+                            <!-- HTML entity &#64; instead. For example, &#64;example would represent @example in HTML. -->
+                            <p><button class="button">Contact</button></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="card">
+                        <img src="../assets/team2.jpg" alt="Mike" style="width:100%">
+                        <div class="container">
+                            <h2>Mike Ross</h2>
+                            <p class="title">Art Director</p>
+                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                            <p>mike&#64;example.com</p>
+                            <p><button class="button">Contact</button></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="card">
+                        <img src="../assets/team3.jpg" alt="John" style="width:100%">
+                        <div class="container">
+                            <h2>John Doe</h2>
+                            <p class="title">Designer</p>
+                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                            <p>john&#64;example.com</p>
+                            <p><button class="button">Contact</button></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br><br>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <span>© {{ currentYear }} DIGID. All rights reserved.</span>
+      </div>
+    </footer>
+</body>

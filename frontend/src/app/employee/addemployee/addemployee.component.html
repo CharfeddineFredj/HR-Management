@@ -1,0 +1,229 @@
+<app-loader [isLoading]="isLoading"></app-loader>
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>User Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item active">Add new user</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <!-- Profile Edit Form -->
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-10">
+        <div class="card">
+          <div class="card-body">
+
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <!-- Profile Image Section -->
+              <div class="row mb-3 mt-2">
+                <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                <div class="col-md-8 col-lg-9">
+                  <img [src]="imageUrl" alt="Profile" width="100">
+                  <div class="pt-2">
+                    <input type="file" id="profileImage" (change)="onFileSelected($event)" hidden #fileInput>
+                    <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" style="margin-right: 7px;" (click)="$event.preventDefault(); fileInput.click();">
+                      <i class="bi bi-upload"></i>
+                    </a>
+                    <a href="#" class="btn btn-danger btn-sm" title="Reset profile image" (click)="$event.preventDefault(); resetImage();">
+                      <i class="bi bi-arrow-clockwise"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Username Field -->
+              <div class="row mb-3">
+                <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="username" formControlName="username" [attr.disabled]="isUsernameDisabled ? '' : null">
+                </div>
+              </div>
+
+              <!-- First Name Field -->
+              <div class="row mb-3">
+                <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="firstName" formControlName="firstname">
+                  <div *ngIf="form.get('firstname').invalid && (form.get('firstname').dirty || form.get('firstname').touched || submitted)">
+                    <div *ngIf="form.get('firstname').errors?.['required']" class="error-message">First name is required.</div>
+                    <div *ngIf="form.get('firstname').errors?.['pattern']" class="error-message">First name must contain only letters.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Last Name Field -->
+              <div class="row mb-3">
+                <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="lastName" formControlName="lastname">
+                  <div *ngIf="form.get('lastname').invalid && (form.get('lastname').dirty || form.get('lastname').touched || submitted)">
+                    <div *ngIf="form.get('lastname').errors?.['required']" class="error-message">Last name is required.</div>
+                    <div *ngIf="form.get('lastname').errors?.['pattern']" class="error-message">Last name must contain only letters.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email Field -->
+              <div class="row mb-3">
+                <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="email" class="form-control" id="email" formControlName="email">
+                  <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched || submitted)">
+                    <div *ngIf="form.get('email').errors?.['required']" class="error-message">Email is required.</div>
+                    <div *ngIf="form.get('email').errors?.['pattern']" class="error-message">Email must be a valid email address.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Field -->
+              <div class="row mb-3">
+                <label for="job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="job" formControlName="job">
+                  <div *ngIf="form.get('job').invalid && (form.get('job').dirty || form.get('job').touched || submitted)">
+                    <div *ngIf="form.get('job').errors?.['required']" class="error-message">Job is required.</div>
+                    <div *ngIf="form.get('job').errors?.['pattern']" class="error-message">Job must contain only letters.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Department Field -->
+              <div class="row mb-3">
+                <label for="department" class="col-md-4 col-lg-3 col-form-label">Department</label>
+                <div class="col-md-8 col-lg-9">
+                  <select class="form-control" id="department" formControlName="department">
+                    <option value="Informatique">Informatique</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Administratif">Administratif</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Hiring Date Field -->
+              <div class="row mb-3">
+                <label for="hire_date" class="col-md-4 col-lg-3 col-form-label">Hiring Date</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="datetime-local" class="form-control" id="hire_date" formControlName="hire_date">
+                  <div *ngIf="form.get('hire_date').invalid && (form.get('hire_date').dirty || form.get('hire_date').touched || submitted)">
+                    <div *ngIf="form.get('hire_date').errors?.['required']" class="error-message">Hiring date is required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone Field -->
+              <div class="row mb-3">
+                <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone Number</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="phone" formControlName="phone">
+                  <div *ngIf="form.get('phone').invalid && (form.get('phone').dirty || form.get('phone').touched || submitted)">
+                    <div *ngIf="form.get('phone').errors?.['required']" class="error-message">Phone number is required.</div>
+                    <div *ngIf="form.get('phone').errors?.['pattern']" class="error-message">Phone number must be 8 digits long and contain only numbers.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Salary Field -->
+              <div class="row mb-3">
+                <label for="salary" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="salary" formControlName="salary">
+                  <div *ngIf="form.get('salary').invalid && (form.get('salary').dirty || form.get('salary').touched || submitted)">
+                    <div *ngIf="form.get('salary').errors?.['required']" class="error-message">Salary is required.</div>
+                    <div *ngIf="form.get('salary').errors?.['pattern']" class="error-message">Salary must be a positive number.</div>
+                    <div *ngIf="form.get('salary').errors?.['min']" class="error-message">Salary must be greater than 0.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Identity Card Field -->
+              <div class="row mb-3">
+                <label for="id_card" class="col-md-4 col-lg-3 col-form-label">Identity Card</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="text" class="form-control" id="id_card" formControlName="id_card">
+                  <div *ngIf="form.get('id_card').invalid && (form.get('id_card').dirty || form.get('id_card').touched || submitted)">
+                    <div *ngIf="form.get('id_card').errors?.['required']" class="error-message">Identity Card is required.</div>
+                    <div *ngIf="form.get('id_card').errors?.['pattern']" class="error-message">Identity Card must be 8 digits long and contain only numbers.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gender Radio Buttons -->
+              <div class="row mb-3">
+                <label class="col-md-4 col-lg-3 col-form-label">Gender</label>
+                <div class="col-md-8 col-lg-9">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="genderMale" formControlName="gender" value="male">
+                    <label class="form-check-label" for="genderMale">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="genderFemale" formControlName="gender" value="female">
+                    <label class="form-check-label" for="genderFemale">Female</label>
+                  </div>
+                  <div *ngIf="form.get('gender').invalid && (form.get('gender').dirty || form.get('gender').touched || submitted)">
+                    <div *ngIf="form.get('gender').errors?.['required']" class="error-message">Gender is required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date of Birth Field -->
+              <div class="row mb-3">
+                <label for="date_birth" class="col-md-4 col-lg-3 col-form-label">Date of Birth</label>
+                <div class="col-md-8 col-lg-9">
+                  <input type="date" class="form-control" id="date_birth" formControlName="date_birth">
+                  <div *ngIf="form.get('date_birth').invalid && (form.get('date_birth').dirty || form.get('date_birth').touched || submitted)">
+                    <div *ngIf="form.get('date_birth').errors?.['required']" class="error-message">Date of birth is required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Address Field -->
+              <div class="row mb-3">
+                <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                <div class="col-md-8 col-lg-9">
+                  <textarea class="form-control" id="address" formControlName="address" rows="2"></textarea>
+                  <div *ngIf="form.get('address').invalid && (form.get('address').dirty || form.get('address').touched || submitted)">
+                    <div *ngIf="form.get('address').errors?.['required']" class="error-message">Address is required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contract Type Field -->
+              <div class="row mb-3">
+                <label for="contract_type" class="col-md-4 col-lg-3 col-form-label">Contract Type</label>
+                <div class="col-md-8 col-lg-9">
+                  <select class="form-control" id="contract_type" formControlName="contract_type">
+                    <option value="CDI">CDI</option>
+                    <option value="CDD">CDD</option>
+                    <option value="CIVP">CIVP</option>
+                    <option value="Karama">Karama</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Role Field -->
+              <div class="row mb-3">
+                <label for="role" class="col-md-4 col-lg-3 col-form-label">Role</label>
+                <div class="col-md-8 col-lg-9">
+                  <select class="form-control" id="role" formControlName="role">
+                    <option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Form Actions -->
+              <div class="text-end">
+                <button type="button" class="btn btn-secondary " (click)="resetForm()">Reset</button>&nbsp;
+                <button type="submit" class="btn btn-primary">Add Employee</button>
+              </div>
+            </form><!-- End Profile Edit Form -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

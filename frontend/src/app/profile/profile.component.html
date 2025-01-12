@@ -1,0 +1,244 @@
+<main id="main" class="main profile-main">
+  <div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+            <img [src]="imageUrl ? imageUrl : 'assets/img/userimg.png'" alt="Profile" class="rounded-circle">
+            <h2>{{ profile?.firstname }} {{ profile?.lastname }}</h2>
+            <h3>{{ profile?.job }}</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+            <ul class="nav nav-tabs nav-tabs-bordered">
+              <li class="nav-item">
+                <button class="nav-link" [class.active]="activeTab === 'overview'" (click)="setActiveTab('overview')">Overview</button>
+              </li>
+              <li *ngIf="isAdmin" class="nav-item">
+                <button class="nav-link" [class.active]="activeTab === 'edit'" (click)="setActiveTab('edit')">Edit Profile</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" [class.active]="activeTab === 'change-password'" (click)="setActiveTab('change-password')">Change Password</button>
+              </li>
+            </ul>
+            <div class="tab-content pt-2">
+              <div *ngIf="activeTab === 'overview'" class="tab-pane fade show active profile-overview" id="profile-overview">
+                <h2 class="card-title text-center">Profile Details</h2>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Registration Number</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.username }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Full Name</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.firstname }} {{ profile?.lastname }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Email</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.email }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Identity Card</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.id_card}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Job</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.job }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Address</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.address }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Department</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.department }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Phone</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.phone }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Gender</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.gender }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Contract Type</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.contract_type }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Date of Birth</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.date_birth }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Salary</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.salary}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Hiring date</div>
+                  <div class="col-lg-9 col-md-8">{{ profile?.hire_date | date:'yyyy-MM-dd HH:mm' }}</div>
+                </div>
+              </div>
+
+              <div *ngIf="isAdmin && activeTab === 'edit'" class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
+                <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+                  <div class="row mb-3">
+                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                    <div class="col-md-8 col-lg-9">
+                      <img [src]="imageUrl"  width="100px">
+                      <div class="pt-2">
+                        <input type="file" id="profileImage" (change)="onFileSelected($event)" hidden #fileInput>
+                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image" style="margin-right: 7px;" (click)="$event.preventDefault(); fileInput.click();">
+                          <i class="bi bi-upload"></i>
+                        </a>
+                        <a href="#" class="btn btn-danger btn-sm" title="Reset profile image" (click)="$event.preventDefault(); resetImage();">
+                          <i class="bi bi-arrow-clockwise"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="username" type="text" class="form-control" id="username" [attr.disabled]="isUsernameDisabled ? '' : null">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="firstName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="firstname" type="text" class="form-control" id="firstname">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="lastName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="lastname" type="text" class="form-control" id="lastname">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="email" type="email" class="form-control" id="email">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="address" type="text" class="form-control" id="address">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="identityCard" class="col-md-4 col-lg-3 col-form-label">Identity Card</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="id_card" type="text" class="form-control" id="id_card">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="phone" type="text" class="form-control" id="phone">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="department" class="col-md-4 col-lg-3 col-form-label">Department</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="department" type="text" class="form-control" id="department">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="job" type="text" class="form-control" id="job">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="salary" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="salary" type="text" class="form-control" id="salary">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="dob" class="col-md-4 col-lg-3 col-form-label">Date of Birth</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="date_birth" type="date" class="form-control" id="date_birth">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="hiringDate" class="col-md-4 col-lg-3 col-form-label">Hiring Date</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="hire_date" type="datetime-local" class="form-control" id="hire_date">
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </form>
+              </div>
+
+
+              <div *ngIf="activeTab === 'change-password'" class="tab-pane fade show active pt-3" id="profile-change-password">
+                <form [formGroup]="form" (ngSubmit)="changePassword()">
+                  <div class="row mb-3">
+                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="currentPassword" name="password" type="password" class="form-control" id="currentPassword">
+                    </div>
+                  </div>
+                  <div class="row mb-3 position-relative">
+                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="newPassword" (input)="onPasswordInput()" (focus)="showTooltip()" (blur)="hideTooltip()" name="newpassword" type="password" class="form-control" id="newPassword">
+                      <div class="password-strength">
+                        <div [ngClass]="passwordStrength" class="strength-bar"></div>
+                      </div>
+                      <div class="password-strength-text">{{ passwordStrengthText }}</div>
+                      <div class="password-requirements-tooltip" *ngIf="tooltipVisible">
+                        <div class="tooltip-arrow"></div>
+                        <div class="tooltip-inner">
+                          <ul>
+                            <li [class.met]="passwordRequirements.minLength">At least 8 characters</li>
+                            <li [class.met]="passwordRequirements.lowerCase">At least one lowercase letter</li>
+                            <li [class.met]="passwordRequirements.upperCase">At least one uppercase letter</li>
+                            <li [class.met]="passwordRequirements.number">At least one number</li>
+                            <li [class.met]="passwordRequirements.specialChar">At least one special character</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                    <div class="col-md-8 col-lg-9">
+                      <input formControlName="renewPassword" name="renewpassword" type="password" class="form-control" id="renewPassword">
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Change Password</button>
+                  </div>
+                </form>
+              </div>
+
+
+
+
+
+            </div><!-- End Bordered Tabs -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

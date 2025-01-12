@@ -1,0 +1,128 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.pagetitle {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.pagetitle h1 {
+  margin: 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Card styles */
+.notf-card {
+  background: #ffffff;
+  border: 1px solid #e3e6f0;
+  border-radius: 0.35rem;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  margin-bottom: 1.5rem;
+}
+
+.notf-card-body {
+  padding: 1.25rem;
+}
+
+/* Table styles */
+.notf-styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: -20px 0;
+  font-size: 1.2em;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff; /* White background for the table */
+}
+
+.notf-styled-table thead tr {
+  background-color: #00b2a9;
+  color: #ffffff;
+  text-align: center; /* Centering the text in the header */
+}
+
+.notf-styled-table td, .notf-styled-table th {
+  padding: 17px 12px;
+  text-align: center; /* Default text alignment for table cells */
+}
+
+.notf-styled-table td {
+  border-bottom: 2px solid #cccccc; /* 2px gray border at the bottom of each cell */
+}
+
+#AnnoucementContent {
+  text-align: left;
+}
+
+.notf-styled-table th:first-child {
+  width: 20%; /* Setting width for the first column */
+  border-top-left-radius: 8px; /* Top left corner */
+  border-bottom-left-radius: 8px; /* Bottom left corner */
+}
+
+.notf-styled-table th:last-child {
+  width: 80%; /* Setting width for the second column */
+  border-top-right-radius: 8px; /* Top right corner */
+  border-bottom-right-radius: 8px; /* Bottom right corner */
+}
+
+.notf-styled-table td:first-child {
+  width: 20%; /* Setting width for the first column */
+}
+
+.notf-styled-table td:last-child {
+  width: 80%; /* Setting width for the second column */
+}
+
+.notf-styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.notf-styled-table tbody tr:nth-of-type(even) {
+  background-color: #ffffff; /* White background for even rows */
+}
+
+.notf-styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #20c997;
+}
+
+body main#main.notification-main {
+  padding-bottom: 320px; /* Adjust this value based on the actual height of your footer */
+}
+
+.notf-pagination-controls {
+  display: flex;
+  margin-top: 18px;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Use 100% if you want it to take up the full width */
+  height: 50px; /* Adjust the height if necessary */
+  padding: 10px 0; /* Add padding to better position the controls */
+}
+
+.notf-no-data-message {
+  color: red;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.notf-highlight {
+  background-color: #dcfaff; /* Bootstrap info background color */
+
+}

@@ -1,0 +1,128 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.rev {
+  background-color: #00b2a9;
+  color: white;
+}
+
+#review {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+#review:first-child {
+  border-top-left-radius: 8px; /* Top left corner */
+  border-bottom-left-radius: 8px; /* Bottom left corner */
+}
+
+#review:last-child {
+  border-top-right-radius: 8px; /* Top right corner */
+  border-bottom-right-radius: 8px; /* Bottom right corner */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+body main#main.candidate-main {
+  padding-bottom: 470px; /* Adjust this value based on the actual height of your footer */
+}
+
+.pagination-controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-bar input.form-control {
+  padding-left: 30px;  /* Adjust this based on the size of your search icon */
+  padding-right: 30px; /* Adjust this based on the size of your clear icon */
+  border-radius: 25px;
+}
+
+input.form-control:focus {
+  /* Enhanced shadow on focus, if needed */
+  box-shadow: 0 4px 8px #C0C0C0; /* Stronger shadow on focus */
+}
+
+#searchInput {
+  border-width: 2px; /* Adjust as needed for thickness */
+  border-style: solid; /* Ensuring the border style is solid */
+  border-color: #808080; /* You can customize the color as needed */
+}
+
+.hide {
+  display: none;
+}
+
+.custom-search-input {
+  height: 48px;
+}
+.highlight-red {
+  font-weight: bold;
+   font-size: 1rem;
+  color: red;
+}
+.highlight-green {
+  font-weight: bold;
+  font-size: 1rem;
+  color: green;
+}
+
+.mt-4 {
+  margin-top: 2rem; /* Adjust the value to increase or decrease the space */
+}
+
+#custom-button {
+  background-color: #a92e47; /* Background color red for the button */
+  color: white; /* Text color white for better contrast */
+  border: none; /* Remove default button border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* Padding for better spacing */
+  text-decoration: none; /* Remove underline from link styling */
+  margin-top: -20px;
+}
+
+#custom-button .custom-icon {
+  margin-right: 5px; /* Space between the icon and the text */
+  font-size: 1em; /* Adjust icon size if needed */
+}
+
+#custom-button span {
+  text-align: center;
+  color: white; /* Text color white */
+  text-decoration: none; /* Ensure the text is not underlined */
+}
+
+.no-reviews {
+  font-size: 18px;
+  text-align: left;
+  padding: 10px;
+  border-radius: 5px;
+}

@@ -1,0 +1,109 @@
+/* Main Container */
+.addholiday-main {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Card Styles */
+.addholiday-card {
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.addholiday-card-body {
+  padding: 30px;
+}
+
+.addholiday-card-title {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Form Styles */
+.addholiday-form-group {
+  margin-bottom: 20px;
+}
+
+.addholiday-form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.addholiday-form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: 16px;
+}
+
+.addholiday-form-control:focus {
+  border-color: #0069d9;
+  box-shadow: 0 0 7px rgba(0, 105, 217, 0.3);
+  outline: none;
+}
+
+.addholiday-text-right {
+  text-align: right;
+}
+
+/* Button Styles */
+.addholiday-btn {
+  padding: 12px 21px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.addholiday-btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.addholiday-btn:focus {
+  outline: none;
+  box-shadow: 0 0 7px rgba(0, 105, 217, 0.5);
+}
+
+/* Adjusted Padding for Footer Space */
+body main.addholiday-main {
+  padding-bottom: 270px; /* Adjust based on the actual height of your footer */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .addholiday-card-body {
+    padding: 20px;
+  }
+
+  .addholiday-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .addholiday-form-control {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .addholiday-card-title {
+    font-size: 18px;
+  }
+}

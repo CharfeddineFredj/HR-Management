@@ -1,0 +1,35 @@
+<main id="main" class="main holiday-main addholiday-main">
+  <div class="pagetitle">
+    <h1>Time Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a [routerLink]="['/home']" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item active">Add Holiday</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section addholiday-section">
+    <div class="container-fluid addholiday-container">
+      <div class="col-lg-12 addholiday-col">
+        <div class="card addholiday-card">
+          <div class="card-body addholiday-card-body">
+            <form (ngSubmit)="onSubmit()" #holidayForm="ngForm" class="addholiday-form">
+              <div class="form-group addholiday-form-group">
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" class="form-control addholiday-form-control" [(ngModel)]="holiday.description" required>
+              </div>
+              <div class="form-group addholiday-form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" class="form-control addholiday-form-control" [(ngModel)]="holiday.date" required>
+              </div>
+              <div class="form-group text-right addholiday-text-right">
+                <button type="submit" class="btn btn-primary addholiday-btn">Add Holiday</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

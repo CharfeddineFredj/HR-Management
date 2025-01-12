@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 78vh;
+}
+
+.vacation-request-detail {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vacation-request-header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #818080;
+  padding: 20px;
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgb(20, 19, 19); /* Corrected border property */
+}
+
+.loading {
+  opacity: 0.5;
+}
+
+.vacation-request-body {
+  flex: 2;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.vacation-request-body h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.loading-title {
+  opacity: 0.5;
+}
+
+.vacation-request-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.vacation-request-info p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.medical-certificate-link {
+  font-size: 17px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
+  color: #007bff; /* Change color if needed */
+  text-decoration: underline; /* Underline the link */
+}
+
+.vacation-request-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px; /* Adjusted margin to move the buttons higher */
+}
+
+.action-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.accept-button {
+  background-color: #00bfa5;
+  padding: 14px 58px;
+}
+
+.refuse-button {
+  background-color: #ff5252;
+  padding: 14px 58px;
+}

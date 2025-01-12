@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pagetitle {
+  text-align: left;
+  color: #333;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px; /* Apply rounded corners to the entire table */
+  overflow: hidden; /* Ensure rounded corners are applied properly */
+}
+
+.styled-table thead tr {
+  background-color: #00b2a9;
+  color: white;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 18px; /* Reduced padding to 8px on all sides */
+}
+.styled-table th{
+  font-size: 18px;
+}
+
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #e2e1e1;
+}
+
+.action-butt {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 5px; /* Border radius for buttons */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.view-button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 20px;
+}
+
+.delete-button {
+  background-color: #F44336;
+  color: white;
+  font-size: 20px;
+}
+
+.action-button i {
+  font-size: 20px;
+}
+
+.user-image1 {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+body main#main.candidate-main {
+  padding-bottom: 470px; /* Adjust this value based on the actual height of your footer */
+}
+
+.approved {
+  color: rgb(7, 150, 7) !important;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.pending {
+  color: orange !important;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.rejected {
+  color: red !important;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.pagination-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-controls {
+  display: inline-block;
+}
+
+.special-gray-cells {
+  background-color: #00b2a9 !important;; /* Light gray background */
+  color: white; /* Dark gray text */
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+}
+.registrationNumberVac{
+  font-size: 18px;
+}

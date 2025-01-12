@@ -1,0 +1,41 @@
+body main#main.layout-main {
+  padding-bottom: 600px ; /* Adjust this value based on the actual height of your footer */
+}
+
+/* Style for the fixed welcome section with background image */
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full height of the viewport */
+
+
+}
+
+.welcome-content {
+  text-align: center;
+  padding: 50px;
+  color: white;
+  background: rgba(221, 92, 92, 0.8); /* Semi-transparent background color for the content */
+  border: 2px solid #333; /* Border color and size */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(240, 240, 240, 0.1); /* Subtle shadow for depth */
+  z-index: 1; /* Ensure the content is above the arrows */
+  position: relative; /* Ensure relative positioning for the arrows to be positioned absolutely */
+  margin-top: -200px;
+  margin-left: -350px;
+}
+
+.welcome-content h1 {
+  font-size: 3rem; /* Adjust font size as needed */
+  margin-bottom: 1rem;
+  font-family: 'Arial', sans-serif; /* Font family for h1 */
+}
+
+.welcome-content p {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  font-family: 'Arial', sans-serif; /* Font family for p */
+}

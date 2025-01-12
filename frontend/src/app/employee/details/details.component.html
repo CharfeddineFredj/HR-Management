@@ -1,0 +1,133 @@
+<main id="main" class="main">
+
+  <div class="pagetitle">
+    <h1>User Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+
+        <div class="card">
+          <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+            <img [src]="imageUrl" alt="Profile" class="rounded-circle">
+            <h2>{{ oneemployee?.firstname }} {{ oneemployee?.lastname }}</h2>
+            <h3>{{ oneemployee?.job }}</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xl-8">
+
+        <div class="card">
+          <div class="card-body pt-3">
+            <!-- Bordered Tabs -->
+
+            <div class="tab-content pt-2">
+
+              <div class="tab-pane fade show active profile-overview" id="profile-overview">
+
+
+                <h2 class="card-title text-center">User Profile Details</h2>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Registration Number</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.username }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.firstname }} {{ oneemployee?.lastname }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Email</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.email}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Job</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.job }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Address</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.address }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Department</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.department }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Phone</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.phone }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Identity Card</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.id_card }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Salary</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.salary}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Date of Birth</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.date_birth}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Gender</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.gender}}</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Contract Type</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.contract_type}}</div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Hiring date</div>
+                  <div class="col-lg-9 col-md-8">{{ oneemployee?.hire_date | date:'yyyy-MM-dd HH:mm' }}</div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Role</div>
+                  <div class="col-lg-9 col-md-8">
+                    <div *ngFor="let role of oneemployee?.roles" class="role-item">
+                      {{ role.name }}
+                    </div>
+                  </div>
+                </div>
+
+                <button (click)="downloadProfile()" class="btn btn-primary details-btn mt-3">
+                  <img src="assets/img/pdf.png" alt="Export to PDF" class="export-iconpdf"> Export
+                </button>
+
+
+              </div>
+
+
+
+
+</div>
+
+</div>
+</div>
+      </div>
+    </div>
+
+</section>
+
+
+</main>

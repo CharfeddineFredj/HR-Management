@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(26, 28, 26);
+  overflow: hidden;
+  width: 1100px;
+  height: 535px;
+
+}
+.subject-ref-image {
+  width: 130px; /* Ajustez la largeur de l'image selon vos besoins */
+  height: auto; /* Maintenir le ratio d'aspect de l'image */
+  margin-top: 20px; /* Ajouter un espace au-dessus de l'image */
+}
+
+.left-panel {
+  background-color: darkcyan;
+  color: white;
+  width: 30%;
+  padding: 20px;
+  text-align: center;
+}
+.left-panel p {
+  font-size: 1.2rem; /* Ajustez la taille du texte selon vos besoins */
+  margin-top: 10px; /* Ajouter un espace au-dessus du texte */
+}
+
+.left-panel .profile-picture {
+  width: 150px;
+  height: 200px;
+  margin: 0 auto 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.left-panel .profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.left-panel h2 {
+  font-size: 20px;
+  margin: 10px 0 0;
+}
+
+.right-panel {
+  padding: 20px;
+  width: 70%;
+  overflow-y: auto; /* Add overflow-y to handle scrolling */
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+  border-bottom: 1px solid #979595;
+  padding-bottom: 4px;
+}
+
+.section-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-content p {
+  margin: 5px 0;
+  font-size: 17px;
+}
+
+.section-content span {
+  font-weight: normal;
+  color: #555;
+  font-size: 17px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.actions .confirm {
+  background-color: darkcyan;
+  color: white;
+}
+
+.actions .reject {
+  background-color: #ccc;
+  color: black;
+}
+
+.experience-text {
+  cursor: pointer;
+  color: blue;
+  text-decoration: none;
+}
+
+.more {
+  color: grey;
+  text-decoration: none;
+}
+
+.experiences-section {
+  max-height: 200px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+

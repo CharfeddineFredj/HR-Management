@@ -1,0 +1,71 @@
+<main id="main" class="candidate-main">
+  <div class="pagetitle">
+    <h1>Vacation Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">Vacation History</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 *ngIf="years.length > 0 && hasVacations()">Personal Vacation Tracking</h5>
+            <ng-container *ngFor="let year of years">
+              <div *ngIf="vacationData[year]?.vacations.length > 0">
+                <h6>Year: {{ year }}</h6>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Days of vacation: <span>{{ vacationData[year]?.totalDays || 0 }} days</span></p>
+                  </div>
+                  <div class="col-md-4">
+                    <p>Spent days of vacation: <span>{{ vacationData[year]?.spentDays || 0 }} days</span></p>
+                  </div>
+                  <div class="col-md-4">
+                    <p>Remaining days of vacation: <span>{{ vacationData[year]?.remainingDays || 0 }} days</span></p>
+                  </div>
+                </div>
+                <h5>My Vacation List for {{ year }}</h5>
+                <div class="table-responsive">
+                  <table class="table custom-table">
+                    <thead>
+                      <tr>
+                        <th id="det">Start Day</th>
+                        <th id="det">End Day</th>
+                        <th id="det">Type</th>
+                        <th id="det">Period</th>
+                        <th id="det">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let vacation of vacationData[year]?.vacations.slice((vacationData[year].currentPage - 1) * vacationData[year].itemsPerPage, vacationData[year].currentPage * vacationData[year].itemsPerPage)">
+                        <td>{{ vacation.start_date | date }}</td>
+                        <td>{{ vacation.end_date | date }}</td>
+                        <td>{{ vacation.type_vacation }}</td>
+                        <td>{{ vacation.period }}</td>
+                        <td [ngClass]="{
+                          'approved': vacation.status === 'approved',
+                          'pending': vacation.status === 'pending',
+                          'rejected': vacation.status === 'rejected'
+                        }">
+                          {{ vacation.status }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <pagination-controls (pageChange)="pageChanged(year, $event)" [autoHide]="true"></pagination-controls>
+              </div>
+            </ng-container>
+            <p *ngIf="!hasVacations()">No vacation requests found.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

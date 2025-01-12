@@ -1,0 +1,45 @@
+<main id="main" class="candidate-main">
+  <div class="pagetitle">
+    <h1>Vacation Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-item active">Details of Vacation</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="container">
+      <div *ngIf="selectedRequest" class="vacation-request-detail">
+        <div class="vacation-request-header">
+          <img [src]="selectedRequest.imageUrl || 'assets/default-user.png'" alt="User Image" class="user-image">
+        </div>
+        <div class="vacation-request-body">
+          <h2>
+            <i class="bi bi-arrow-right-square"></i>
+            Request for a vacation
+          </h2>
+          <div class="vacation-request-info">
+            <p><strong>Period:</strong> {{ selectedRequest.period }}</p>
+            <p><strong>Type of vacation:</strong> {{ selectedRequest.type_vacation }}</p>
+            <p><strong>Start day:</strong> {{ selectedRequest.start_date | date:'yyyy-MM-dd' }}</p>
+            <p><strong>End day:</strong> {{ selectedRequest.end_date | date:'yyyy-MM-dd' }}</p>
+            <div *ngIf="selectedRequest.type_vacation === 'sick vacation'">
+              <p><strong>Medical Certificate:</strong></p>
+              <div *ngIf="selectedRequest.medicalCertificate; else noCertificate">
+                <a class="medical-certificate-link" [href]="getMedicalCertificateUrl(selectedRequest.medicalCertificate)" target="_blank">View Medical Certificate</a>
+              </div>
+              <ng-template #noCertificate>No medical certificate</ng-template>
+            </div>
+          </div>
+          <div class="vacation-request-actions">
+            <button class="action-button accept-button" (click)="approveRequest(selectedRequest.id)">Accept</button>
+            <button class="action-button refuse-button" (click)="rejectRequest(selectedRequest.id)">Refuse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

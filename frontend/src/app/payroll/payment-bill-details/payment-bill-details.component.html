@@ -1,0 +1,136 @@
+<main id="main" class="main details-main">
+  <div class="pagetitle">
+    <h1>Payroll Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Pay slip</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card larger-card">
+          <div class="card-body" *ngIf="payroll">
+            <div id="paystub" class="paystub">
+
+              <div class="header-content">
+                <h1>PAY SLIP</h1>
+                <p class="edit-date"><span class="label">Issued on:</span> {{ today | date: 'dd/MM/yyyy' }}</p>
+              </div>
+
+              <div class="details">
+                <div class="left">
+                  <p><span class="label">Employee ID:</span> {{ payroll.user.username }}</p>
+                  <p><span class="label">Last Name:</span> {{ payroll.user.lastname }}</p>
+                  <p><span class="label">First Name:</span> {{ payroll.user.firstname }}</p>
+                  <p><span class="label">Status:</span>
+                    <span *ngFor="let role of payroll.user.roles; let isLast = last">
+                      {{ role.name }}<span *ngIf="!isLast">, </span>
+                    </span>
+                  </p>
+                  <p><span class="label">Position:</span> {{ payroll.user.job }}</p>
+                  <p><span class="label">Department: </span> {{ payroll.user.department }}</p>
+                </div>
+                <div class="right">
+                  <p><span class="label">Year:</span> {{ getYear(payroll.payrollDate) }}</p>
+                  <p><span class="label">Month:</span> {{ getMonth(payroll.payrollDate) }}</p>
+                  <p><span class="label">Payroll Type:</span> Monthly Salary</p>
+                  <p><span class="label">Working Hours Regime:</span>48</p>
+                  <p><span class="label">Base Salary:</span> {{ payroll.user.salary | number:'1.2-2' }}</p>
+                </div>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Income</th>
+                    <th>Deductions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>100</td>
+                    <td>Base Salary</td>
+                    <td>{{ (convertHoursToDays(payroll.totalHoursWorkedBeforeAdjustment) - convertMinutesToDays(payroll.overtimeMinutes)) | number:'1.2-2' }} days</td>
+                    <td>{{ calculateBaseSalary() | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>160</td>
+                    <td>Performance Bonus</td>
+                    <td>7%</td>
+                    <td>{{ calculatePrimeRendement(calculateBaseSalary()) | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>160</td>
+                    <td>Overtime Hours</td>
+                    <td>{{ convertMinutesToDays(payroll.overtimeMinutes) | number:'1.2-2' }} days</td>
+                    <td>{{ calculateOvertimePay() | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>200</td>
+                    <td>Gross Salary</td>
+                    <td>{{ convertHoursToDays(payroll.totalHoursWorkedBeforeAdjustment) | number:'1.2-2' }} days</td>
+                    <td>{{ calculateGrossSalary() | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>210</td>
+                    <td>CNSS Deduction</td>
+                    <td>10%</td>
+                    <td>0.00</td>
+                    <td>{{ calculateCNSS(calculateGrossSalary()) | number:'1.2-2' }}</td>
+                  </tr>
+                  <tr>
+                    <td>240</td>
+                    <td>Taxable Salary</td>
+                    <td>0.00</td>
+                    <td>{{ calculateTaxableSalary() | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>400</td>
+                    <td>Solidarity Social Contribution</td>
+                    <td>1%</td>
+                    <td>0.00</td>
+                    <td>{{ calculateContributionSolidaire(calculateGrossSalary()) | number:'1.2-2' }}</td>
+                  </tr>
+                  <tr>
+                    <td>450</td>
+                    <td>Withholding Tax</td>
+                    <td>6%</td>
+                    <td>0.00</td>
+                    <td>{{ calculateSourceDeduction(calculateGrossSalary()) | number:'1.2-2' }}</td>
+                  </tr>
+                  <tr>
+                    <td>500</td>
+                    <td>Net Pay</td>
+                    <td>0.00</td>
+                    <td>{{ calculateNetSalary() | number:'1.2-2' }}</td>
+                    <td>0.00</td>
+
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <button (click)="downloadPDF()" class="btn btn-primary bill-btn">
+              <img src="assets/img/pdf.png" alt="Export to PDF" class="export-iconpdf">Export
+            </button>
+            <button (click)="sendPayslipNotification()" class="btn btn-primary bill-btn mx-2" [disabled]="isPayslipNotificationSent">
+              <img src="assets/img/pdf.png" alt="Send Payslip Notification" class="export-iconpdf">Send Notification
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

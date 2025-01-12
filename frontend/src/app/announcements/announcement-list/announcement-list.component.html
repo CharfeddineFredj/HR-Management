@@ -1,0 +1,86 @@
+<main id="main" class="main ann-main">
+   <!-- Page Title -->
+   <div class="pagetitle">
+    <h1>Event Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+          <a href="/home" rel="noopener noreferrer">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="/home/announcementNotification">Event List</a>
+
+        </li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="ann-section">
+    <div class="ann-row">
+      <div class="ann-col-lg-12">
+        <div class="ann-card-body">
+          <div class="ann-button-container">
+            <button class="ann-add-announcement-button" (click)="openAddAnnouncementModal(addAnnouncementModal)">Add an Event</button>
+          </div>
+          <div class="ann-styled-table-container" *ngIf="sortedAnnouncements && sortedAnnouncements.length; else noDataTemplate">
+            <table class="ann-styled-table">
+              <thead>
+                <tr>
+                  <th scope="col">TITLE</th>
+                  <th scope="col">CONTENT</th>
+                  <th scope="col">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let announcement of sortedAnnouncements | paginate: { itemsPerPage: 5, currentPage: e };">
+                  <td>{{ announcement.title }}</td>
+                  <td [innerHTML]="announcement.content" id="ann-AnnoucementContent"></td>
+                  <td>
+                    <button class="ann-action-butt1 ann-edite-button" (click)="editAnnouncement(announcement)">
+                      <i class="bi bi-pencil-fill"></i>
+                    </button>
+                    <button class="ann-action-butt1 ann-delet-button" (click)="deleteAnnouncement(announcement.id)">
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ng-template #noDataTemplate>
+            <p class="ann-no-data-available">No data available.</p>
+          </ng-template>
+        </div>
+        <pagination-controls class="ann-pagination-controls" (pageChange)="onPageChange($event)"></pagination-controls>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->
+
+<!-- Modal -->
+<ng-template #addAnnouncementModal let-modal>
+  <div role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a new event</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(modal)">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" [(ngModel)]="announcement.title" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="content" class="form-label">Body</label>
+            <angular-editor [(ngModel)]="announcement.content" name="content" [config]="editorConfig"></angular-editor>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Post</button>
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

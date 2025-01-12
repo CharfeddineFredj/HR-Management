@@ -1,0 +1,32 @@
+<!-- status-chart.component.html -->
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="card-title text-center">Number of employees by status</h2>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonStatus" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-menu-button-wide"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonStatus">
+          <li><a class="dropdown-item" (click)="downloadChart('png')">Download PNG</a></li>
+          <li><a class="dropdown-item" (click)="downloadCSV()">Download CSV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="isLoading" class="text-center">
+      Loading...
+    </div>
+    <div *ngIf="!isLoading" class="chart-container">
+      <div style="display: block;">
+        <canvas baseChart
+                [data]="chartData"
+                [options]="chartOptions"
+                [type]="chartType"
+                [legend]="chartLegend"
+                [plugins]="chartPlugins"
+                id="statusChart">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

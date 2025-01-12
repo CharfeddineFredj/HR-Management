@@ -1,0 +1,141 @@
+<section className="nav">
+  <nav class="navbar navbar-expand-sm border-bottom border-body" data-bs-theme="dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="/acceuil" class="logo-link">
+          <img src="assets/img/Picture1.png" alt="DIGID" id="logo">
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/acceuil" routerLinkActive="active" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/candidat" routerLinkActive="active" class="nav-link"   [class.disabled]="isActive('/candidat')"
+        [style.pointerEvents]="isActive('/candidat') ? 'none' : 'auto'"
+        [style.cursor]="isActive('/candidat') ? 'not-allowed' : 'pointer'">Espace candidat</a>
+      </li>
+    </ul>
+
+  </nav>
+</section>
+<app-loader [isLoading]="isLoading"></app-loader> <!-- Loader Component -->
+<div class="main-content">
+  <div class="form-container">
+    <div class="form-section civility">
+      <h2>Civility</h2>
+      <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()">
+        <label for="firstname">First name</label>
+        <input type="text" id="firstname" formControlName="firstname" />
+        <div *ngIf="candidateForm.get('firstname').touched && candidateForm.get('firstname').invalid" class="error">
+          <div *ngIf="candidateForm.get('firstname').errors?.['required']">First name is required.</div>
+          <div *ngIf="candidateForm.get('firstname').errors?.['pattern']">First name must contain only letters.</div>
+        </div>
+
+        <label for="lastname">Last name</label>
+        <input type="text" id="lastname" formControlName="lastname" />
+        <div *ngIf="candidateForm.get('lastname').touched && candidateForm.get('lastname').invalid" class="error">
+          <div *ngIf="candidateForm.get('lastname').errors?.['required']">Last name is required.</div>
+          <div *ngIf="candidateForm.get('lastname').errors?.['pattern']">Last name must contain only letters.</div>
+        </div>
+
+        <label for="date_birth">Date of birth</label>
+        <input type="date" id="date_birth" formControlName="date_birth" class="large-input" placeholder="jj/mm/aaaa"/>
+        <div *ngIf="candidateForm.get('date_birth').touched && candidateForm.get('date_birth').invalid" class="error">
+          <div *ngIf="candidateForm.get('date_birth').errors?.['required']">Date of birth is required.</div>
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <div *ngIf="candidateForm.get('email').touched && candidateForm.get('email').invalid" class="error">
+          <div *ngIf="candidateForm.get('email').errors?.['required']">Email is required.</div>
+          <div *ngIf="candidateForm.get('email').errors?.['pattern']">Email must be a valid email address.</div>
+        </div>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" formControlName="phone" />
+        <div *ngIf="candidateForm.get('phone').touched && candidateForm.get('phone').invalid" class="error">
+          <div *ngIf="candidateForm.get('phone').errors?.['required']">Phone number is required.</div>
+          <div *ngIf="candidateForm.get('phone').errors?.['minlength']">Phone number must be 8 digits long.</div>
+          <div *ngIf="candidateForm.get('phone').errors?.['maxlength']">Phone number must be 8 digits long.</div>
+        </div>
+
+        <label for="cv" id="cv">CV</label>
+        <input type="file" id="cvs" (change)="onCvFileSelected($event)" />
+        <div *ngIf="formSubmitted && !selectedCvFile" class="error">Please upload a CV.</div>
+
+        <label for="coverletter" id="coverletter">Cover letter</label>
+        <input type="file" id="coverletters" (change)="onCoverLetterFileSelected($event)" />
+        <div *ngIf="formSubmitted && !selectedCoverLetterFile" class="error">Please upload a cover letter.</div>
+      </form>
+    </div>
+
+    <div class="right-sections">
+      <div class="form-section">
+        <h2>Study level</h2>
+        <form [formGroup]="candidateForm">
+          <label for="level">Level</label>
+          <input type="text" id="level" formControlName="level" />
+          <div *ngIf="candidateForm.get('level').touched && candidateForm.get('level').invalid" class="error">
+            <div *ngIf="candidateForm.get('level').errors?.['required']">Study level is required.</div>
+          </div>
+
+          <label for="diplomatitle">Diploma title</label>
+          <input type="text" id="diplomatitle" formControlName="diplomatitle" />
+          <div *ngIf="candidateForm.get('diplomatitle').touched && candidateForm.get('diplomatitle').invalid" class="error">
+            <div *ngIf="candidateForm.get('diplomatitle').errors?.['required']">Diploma title is required.</div>
+          </div>
+
+          <label for="university">University</label>
+          <input type="text" id="university" formControlName="university" />
+          <div *ngIf="candidateForm.get('university').touched && candidateForm.get('university').invalid" class="error">
+            <div *ngIf="candidateForm.get('university').errors?.['required']">University is required.</div>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>Experience</h2>
+        <form [formGroup]="candidateForm">
+          <label for="yearsexperience">Years experience</label>
+          <input type="number" id="yearsexperience" formControlName="yearsexperience" min="0"/>
+          <div *ngIf="candidateForm.get('yearsexperience').touched && candidateForm.get('yearsexperience').invalid" class="error">
+            <div *ngIf="candidateForm.get('yearsexperience').errors?.['required']">Years of experience is required.</div>
+          </div>
+
+          <label for="experiences">Your experiences</label>
+          <textarea id="experiences" formControlName="experiences"></textarea>
+          <div *ngIf="candidateForm.get('experiences').touched && candidateForm.get('experiences').invalid" class="error">
+            <div *ngIf="candidateForm.get('experiences').errors?.['required']">Experience details are required.</div>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>Subject reference</h2>
+        <form [formGroup]="candidateForm">
+          <label for="subject_ref">Your ref</label>
+          <input type="text" id="subject_ref" formControlName="subject_ref"/>
+          <div *ngIf="candidateForm.get('subject_ref').touched && candidateForm.get('subject_ref').invalid" class="error">
+            <div *ngIf="candidateForm.get('subject_ref').errors?.['required']">Subject reference is required.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="submit-btn" type="submit" (click)="onSubmit()">Submit</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>© {{ currentYear }} DIGID. All rights reserved.</span>
+  </div>
+</footer>
+
+
+
+
+
+
+

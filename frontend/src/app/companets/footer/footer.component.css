@@ -1,0 +1,11 @@
+footer.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* Choose a background color that fits your design */
+  color: #333; /* Text color */
+  text-align: center;
+  padding: 20px; /* Adjust padding to your needs */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better separation */
+}

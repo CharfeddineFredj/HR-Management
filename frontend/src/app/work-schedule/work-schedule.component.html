@@ -1,0 +1,87 @@
+<main id="main" class="main worksh-main">
+  <div class="pagetitle">
+    <h1>Schedule Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html" rel="noopener noreferrer">Home</a></li>
+        <li class="breadcrumb-item">Work schedule</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="worksh-section">
+    <div class="worksh-container-fluid">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <!-- Search Bar -->
+            <div class="d-flex justify-content-end align-items-center mt-3">
+              <div class="worksh-search-bar position-relative mt-2">
+                <input type="search" id="searchInput" name="query" placeholder="Search" title="Enter search keyword"
+                  class="form-control pl-5 pr-5 worksh-custom-search-input" [(ngModel)]="search" (input)="updateSearch()">
+                <i class="bi bi-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%);"
+                  [ngClass]="{'d-none': search.length > 0}"></i>
+                <i class="bi bi-x-lg position-absolute worksh-clear-button" style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;"
+                  [ngClass]="{'d-none': search.length === 0}" (click)="clearSearch()"></i>
+              </div>
+            </div>
+
+            <!-- Add Work Schedule Button -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center">
+                <button class="btn btn-link worksh-custom-button" [routerLink]="['/home/AddWorkShedule']" title="Add Work Schedule" id="worksh-custom-button">
+                  <i class="bi bi-plus-circle-fill worksh-custom-icon"></i>
+                  <span>Add new work schedule</span>
+                </button>
+                <button class="btn btn-secondary worksh-custom-export-button" (click)="downloadCSV()" title="Export to Excel">
+                  <img src="assets/img/Excel.png" alt="Export to Excel" class="worksh-export-icon">
+                  Export
+                </button>
+                <button class="btn btn-secondary worksh-custom-export-buttonpdf" (click)="downloadPDF()"  title="Export to PDF">
+                  <img src="assets/img/pdf.png" alt="Export to PDF" class="worksh-export-iconpdf">
+                  Export
+                </button>
+              </div>
+            </div>
+
+            <div *ngIf="workSchedules.length > 0; else noDataTemplate" class="worksh-table-responsive">
+              <table class="worksh-table">
+                <thead>
+                  <tr class="worksh-table-header">
+                    <th class="worksh-col-index">#</th>
+                    <th>Registration Number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Work Days</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let schedule of workSchedules | searchschedule:search | paginate: { itemsPerPage: 5, currentPage: page }; let i = index">
+                    <th scope="row" class="worksh-col-index worksh-special-gray-cell">{{i+1}}</th>
+                    <td>{{ schedule.user.username }}</td>
+                    <td>{{ schedule.user.firstname }}</td>
+                    <td>{{ schedule.user.lastname }}</td>
+                    <td>{{ schedule.scheduledCheckInTime }}</td>
+                    <td>{{ schedule.scheduledCheckOutTime }}</td>
+                    <td>{{ getWorkDaysString(schedule.workDays) }}</td>
+                    <td>
+                      <button  [routerLink]="['/home/EditWorkShedule', schedule.id]" style="background: none; border: none; padding: 0;margin-top: -5px;" title="Edit">
+                        <i class="bi bi-pencil-fill" style="color:  #f0a211; font-size: 25px;"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ng-template #noDataTemplate>
+              <p>No data available.</p>
+            </ng-template>
+            <pagination-controls class="worksh-pagination-controls mt-3" (pageChange)="page = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

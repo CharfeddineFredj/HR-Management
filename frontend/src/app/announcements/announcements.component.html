@@ -1,0 +1,46 @@
+<main id="main" class="main notification-main">
+  <!-- Page Title -->
+  <div class="pagetitle">
+    <h1>Event Management</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+          <a href="/home" rel="noopener noreferrer">Home</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a href="/home/announcementNotification">User Events</a>
+        </li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="notf-card-body">
+          <div class="notf-styled-table-container" *ngIf="sortedAnnouncements && sortedAnnouncements.length; else noDataTemplate">
+            <table class="notf-styled-table">
+              <thead>
+                <tr>
+                  <th scope="col">TITLE</th>
+                  <th scope="col">CONTENT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let announcement of sortedAnnouncements | paginate: { itemsPerPage: 5, currentPage: e };"
+                [class.notf-highlight]="announcement.highlighted">
+                  <td>{{ announcement.title }}</td>
+                  <td [innerHTML]="announcement.content" id="AnnoucementContent"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ng-template #noDataTemplate>
+            <p class="notf-no-data-message">No data available.</p>
+          </ng-template>
+        </div>
+        <pagination-controls class="notf-pagination-controls" (pageChange)="onPageChange($event)"></pagination-controls>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->

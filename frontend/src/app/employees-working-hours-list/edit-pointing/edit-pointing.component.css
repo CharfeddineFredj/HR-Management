@@ -1,0 +1,63 @@
+
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button.btn {
+  display: inline-block; /* Changed from block to inline-block */
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.btn:hover {
+  background-color: #0056b3;
+}
+
+input.form-control:disabled {
+  background-color: #e9ecef; /* Grey background */
+}
+
+.grey-background {
+  background-color: #e9ecef; /* Grey background for disabled state */
+}
+
+.form-group.text-right {
+  text-align: right !important; /* Added !important to ensure the style is applied */
+}
+
+button.btn.btn-primary {
+  margin-top: 20px;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}

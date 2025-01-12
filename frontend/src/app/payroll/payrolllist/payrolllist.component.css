@@ -1,0 +1,162 @@
+/* Styles spécifiques pour la page de gestion des paies */
+body main#main.paymangement-main {
+  padding-bottom: 390px; /* Adjust this value based on the actual height of your footer */
+}
+
+
+
+.paymangement-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.paymangement-table th, .paymangement-table td {
+  border: 1px solid #6d6d6d;
+  padding: 8px;
+}
+
+.paymangement-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.paymangement-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.paymangement-table tr:hover {
+  background-color: #ddd;
+}
+
+.paymangement-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #343a40;
+  color: white;
+}
+
+input[type="search"]::-ms-clear {
+  display: none;
+}
+
+/* Remove the clear button in Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* Safari: Remove the inner and outer clear buttons */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hide {
+  display: none;
+}
+
+.paymangement-search-bar input.form-control {
+  padding-left: 30px;  /* Adjust this based on the size of your search icon */
+  padding-right: 30px; /* Adjust this based on the size of your clear icon */
+  border-radius: 25px;
+}
+
+#searchInput {
+  border-width: 2px; /* Adjust as needed for thickness */
+  border-style: solid; /* Ensuring the border style is solid */
+  border-color: #808080; /* You can customize the color as needed */
+}
+
+input.form-control {
+  /* Adding a box shadow */
+  box-shadow: 0 2px 5px #C0C0C0; /* Adjust the rgba values based on your color preference */
+
+  /* Optional: on focus to change the shadow as well */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+input.form-control:focus {
+  /* Enhanced shadow on focus, if needed */
+  box-shadow: 0 4px 8px #C0C0C0; /* Stronger shadow on focus */
+}
+
+.paymangement-custom-search-input {
+  height: 48px;
+}
+
+.paymangement-clear-button {
+  display: none;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.paymangement-noData {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #6c757d;
+}
+
+.paymangement-custom-export-button,
+.paymangement-custom-export-buttonpdf {
+  display: flex;
+  align-items: center;
+  background-color: #e2e6ea; /* Button background color */
+  border: 1px solid #ced4da; /* Border color */
+  color: black; /* Text color */
+  font-size: 17px; /* Font size */
+  padding: 10px 15px; /* Padding */
+  border-radius: 4px; /* Rounded corners */
+  text-decoration: none; /* Remove underline from text */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  margin-bottom: 25px;
+}
+
+.paymangement-custom-export-button:hover,
+.paymangement-custom-export-buttonpdf:hover {
+  background-color: #d4d8dc; /* Hover background color */
+  color: black;
+}
+
+.paymangement-export-icon,
+.paymangement-export-iconpdf {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+button.btn.btn-primary.paymanagement-btn {
+  background-color: #3c7fe4; /* Couleur de fond */
+  border: none; /* Supprimer la bordure */
+  color: white; /* Couleur du texte */
+  padding: 3px 10px; /* Espacement interne */
+  text-align: center; /* Alignement du texte */
+  text-decoration: none; /* Supprimer la décoration du texte */
+  display: inline-flex; /* Affichage en ligne avec flexbox */
+  align-items: center; /* Alignement vertical de l'icône et du texte */
+  font-size: 12px; /* Taille de la police */
+  margin: 4px 2px; /* Espacement autour du bouton */
+  cursor: pointer; /* Curseur pointeur */
+  border-radius: 12px; /* Bords arrondis */
+}
+
+button.btn.btn-primary.paymanagement-btn .bi {
+  font-size: 23px; /* Taille de l'icône */
+  align-items: center;
+}
+
+button.btn.btn-primary.paymanagement-btn:hover {
+  background-color: #38457b; /* Couleur de fond au survol */
+}
+.paymanagement-pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Use 100% if you want it to take the full width */
+  height: 50px; /* Adjust height if necessary */
+  padding: 10px 0; /* Add padding for better positioning */
+}

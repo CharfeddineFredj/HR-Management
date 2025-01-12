@@ -1,0 +1,179 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.nav {
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 50px; /* Adjust padding as needed */
+}
+
+.form-container {
+  display: flex;
+  gap: 20px;
+}
+
+.civility {
+  flex: 1 1 50%;
+  background-color: teal;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.right-sections {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+  background-color: teal;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-section h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: white;
+  margin-bottom: 7px;
+  font-size: 17px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+input[type="file"] {
+  border: 1px solid grey;
+  padding: 17px;
+  font-size: 17px;
+  border-radius: 5px;
+}
+#cv{
+  margin-top: 30px;
+}
+#coverletter{
+  margin-top: 30px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align the button to the right */
+  padding: 20px; /* Add padding to separate the button from the form */
+}
+
+.submit-btn {
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+}
+
+.submit-btn:hover {
+  background-color: darkcyan;
+}
+
+#logo {
+  max-width: 55px;
+  max-height: 55px;
+  filter: invert(1) brightness(2) contrast(2); /* Makes the image white */
+  margin-right: 25px; /* Adds space between the logo and the Home link */
+}
+
+.logo-link {
+  display: inline-block;
+  cursor: pointer; /* Change cursor to pointer when hovering over the logo */
+}
+
+.nav-item {
+  color: white;
+  margin-left: 2.5rem;
+  font-size: 1rem;
+}
+
+.navbar {
+  color: white;
+  background-color: black;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-size: 3rem;
+  height: 90px; /* Set the desired height of the navbar */
+}
+
+.navbar-nav {
+  align-items: center; /* Vertically align the logo and links */
+}
+
+.nav-link {
+  color: white; /* Default link color */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  font-size: medium;
+  font-size: 1.5rem;
+}
+.nav-link.active {
+  /* Styles pour le lien actif */
+  color: #9a9a1d; /* Exemple de couleur de texte pour le lien actif */
+}
+.nav-link:hover {
+  color: #9a9a1d; /* Color when the link is active or hovered over */
+}
+
+.footer {
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.large-input {
+  width: 100%; /* Adjust the width as needed */
+  padding: 10px; /* Optional: Adjust padding for better appearance */
+  font-size: 16px; /* Optional: Adjust font size for better appearance */
+
+
+}
+.error {
+  color: rgb(245, 0, 0);
+  font-size: 0.9em;
+}
