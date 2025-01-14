@@ -1,7 +1,11 @@
 # 🌟 HRM & Online Attendance Management
 
+
+
 ## 🚀 Project Description
 This project is a web and mobile application for human resource management (HRM) and online attendance tracking. Developed as part of my final engineering project at Digital Identity, the application integrates Angular and Spring Boot for the frontend and backend, and React Native for mobile development. It follows a microservices architecture and applies the Scrum methodology to ensure efficient and collaborative development.
+
+---
 
 ## 🎯 Main Features
 
@@ -23,6 +27,8 @@ This project is a web and mobile application for human resource management (HRM)
 ### 🧑‍🎓 Candidate
 - 💼 Apply for job or internship opportunities.
 
+---
+
 ## 🔧 Technologies Used
 
 ### Frontend
@@ -41,42 +47,49 @@ This project is a web and mobile application for human resource management (HRM)
 ### Methodology
 - 📋 Scrum
 
+---
+
 ## 🎯 Objective
 The project aims to streamline HR management and attendance tracking while providing a seamless and user-friendly platform for all stakeholders.
 
-## ⚙️ Install Dependencies
+---
 
-### Frontend (Web)
+## 🛠️ Installation and Setup
+
+### 1️⃣ Install Dependencies
+
+#### Frontend (Web)
 Navigate to the frontend folder and install dependencies:
 ```bash
 cd frontend
 npm install
 ```
 
-### Backend
+#### Backend
 Navigate to the backend folder and install dependencies:
 ```bash
 cd backend
 ./mvnw install
 ```
 
-### Mobile
+#### Mobile
 Navigate to the mobile folder and install dependencies:
 ```bash
 cd mobile
 npm install
 ```
 
-## 3️⃣ Configure Environments
+---
 
-### Backend
+### 2️⃣ Configure Environments
+
+#### Backend
 Copy the `.env.example` file and rename it to `.env`:
 ```bash
 cp .env.example .env
 ```
-
 Configure database settings in the `.env` file:
-```env
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -85,7 +98,7 @@ DB_USERNAME=root
 DB_PASSWORD=yourpassword
 ```
 
-### Frontend
+#### Frontend
 Configure the `environment.ts` file with the backend API settings:
 ```typescript
 export const environment = {
@@ -94,35 +107,40 @@ export const environment = {
 };
 ```
 
-## 4️⃣ Prepare the Database
+---
+
+### 3️⃣ Prepare the Database
 Run migrations:
 ```bash
 ./mvnw spring-boot:run
 ```
-
 Populate data using seeders (if available).
 
-## 5️⃣ Start the Project
+---
 
-### Backend
+### 4️⃣ Start the Project
+
+#### Backend
 Run the Spring Boot server:
 ```bash
 ./mvnw spring-boot:run
 ```
 
-### Frontend
+#### Frontend
 Run the Angular development server:
 ```bash
 cd frontend
 ng serve
 ```
 
-### Mobile
+#### Mobile
 Start the React Native application:
 ```bash
 cd mobile
 npx react-native run-android
 ```
+
+---
 
 ## 6️⃣ Access the Application
 
@@ -141,6 +159,8 @@ http://localhost:8080
 ### Mobile
 Use an emulator or connected Android device to test the application.
 
+---
+
 ## 🚀 Features to Test
 
 - 🕐 Online attendance tracking and history.
@@ -148,6 +168,8 @@ Use an emulator or connected Android device to test the application.
 - 🗂️ Manage user profiles and work schedules.
 - 💼 Apply for job openings as a candidate.
 - 🔔 Notifications for employees and administrators.
+
+---
 
 ## 🖼️ Screenshots
 
@@ -168,3 +190,5 @@ Use an emulator or connected Android device to test the application.
 ### 🖥️ Web Interface - Leave Requests
 
 ### 🖥️ Web Interface - Job Applications
+
+---
