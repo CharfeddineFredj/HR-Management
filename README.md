@@ -1,6 +1,6 @@
 # 🌟 **HRM & Online Attendance Management**
 
----
+
 
 ## 🚀 **Project Description**
 This project is a **web and mobile application** for **human resource management (HRM)** and **online attendance tracking**. Developed as part of my **final engineering project** at **Digital Identity**, the application integrates **Angular** and **Spring Boot** for the web frontend and backend, and **React Native** for mobile development.  
