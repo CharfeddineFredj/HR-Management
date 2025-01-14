@@ -194,8 +194,10 @@ Use an emulator or connected Android device to test the application.
 
 ### 📱 Mobile Interface - Manage Work Schedules
 
-![image](https://github.com/user-attachments/assets/86150130-6848-405e-beb6-ffc3da638f75)
-![image](https://github.com/user-attachments/assets/de04e9b7-3248-47ac-ae03-4f0c76ff04fe)
+<div style="display: flex; gap: 20px;">
+  <img src="https://github.com/user-attachments/assets/86150130-6848-405e-beb6-ffc3da638f75" alt="Image 1" width="300">
+  <img src="https://github.com/user-attachments/assets/de04e9b7-3248-47ac-ae03-4f0c76ff04fe" alt="Image 2" width="300">
+</div>
 
 
 ### 🖥️ Web Interface - Attendance Records
