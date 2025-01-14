@@ -197,9 +197,13 @@ Use an emulator or connected Android device to test the application.
 ![image](https://github.com/user-attachments/assets/e5b09f40-3b92-4583-92d9-0d4a27587b2e)
 
 
-### 📱 Mobile Interface - Record Attendance 
+### 📱 Mobile Interface - Record Attendance & Consult History
+<div style="margin-bottom: 20px;">
 ![image](https://github.com/user-attachments/assets/b6b1bedf-ab64-448c-a952-a9e8000722e8)
+</div>
+<div>
 ![image](https://github.com/user-attachments/assets/442c5a56-84e2-42cb-acb3-6c7f37fcbb40)
+</div>
 
 
 ### 🖥️ Web Interface - Leave Requests
