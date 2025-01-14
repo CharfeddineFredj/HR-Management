@@ -1,179 +1,170 @@
-# 🌟 **HRM & Online Attendance Management**
+# 🌟 HRM & Online Attendance Management
 
+## 🚀 Project Description
+This project is a web and mobile application for human resource management (HRM) and online attendance tracking. Developed as part of my final engineering project at Digital Identity, the application integrates Angular and Spring Boot for the frontend and backend, and React Native for mobile development. It follows a microservices architecture and applies the Scrum methodology to ensure efficient and collaborative development.
 
+## 🎯 Main Features
 
-## 🚀 **Project Description**
-This project is a **web and mobile application** for **human resource management (HRM)** and **online attendance tracking**. Developed as part of my **final engineering project** at **Digital Identity**, the application integrates **Angular** and **Spring Boot** for the web frontend and backend, and **React Native** for mobile development.  
-The project employs a **microservices architecture** and follows the **Scrum methodology** to ensure efficient and collaborative development.
-
----
-
-## 🎯 **Main Features**
-
-### 🧑‍💻 **Administrator**
+### 🧑‍💻 Administrator
 - 🔧 Manage and supervise the system's operations.
-- 🛠️ Respond to user needs and ensure smooth system functionality.
+- 🛠️ Respond to user needs and ensure the system runs smoothly.
 
-### 👤 **HR Manager**
+### 👤 HR Manager
 - 🗂️ Manage users, work schedules, leave requests, payroll, and events.
 
-### 👨‍💼 **Employee**
-- 🕐 Track attendance online.
+### 👨‍💼 Employee
+- 🕐 Use the app for online attendance tracking.
 - 📅 Submit leave requests and view personal history.
-- 🔔 Receive notifications and updates on events.
+- 🔔 Receive notifications and stay updated on events.
 
-### 🧑‍💼 **Recruiter**
+### 🧑‍💼 Recruiter
 - 📄 Manage job applications and schedule interviews.
 
-### 🧑‍🎓 **Candidate**
-- 💼 Apply for jobs or internships.
+### 🧑‍🎓 Candidate
+- 💼 Apply for job or internship opportunities.
 
----
+## 🔧 Technologies Used
 
-## 🔧 **Technologies Used**
-- **Frontend**: 🖥️ Angular, 🎨 Bootstrap  
-- **Backend**: ⚙️ Spring Boot  
-- **Mobile**: 📱 React Native  
-- **Architecture**: 🔗 Microservices  
-- **Methodology**: 📋 Scrum  
+### Frontend
+- 🖥️ Angular
+- 🎨 Bootstrap
 
----
+### Backend
+- ⚙️ Spring Boot
 
-## 🎯 **Objective**
-The project aims to **streamline HR management** and **attendance tracking** while providing a seamless and user-friendly platform for all stakeholders.
+### Mobile
+- 📱 React Native
 
----
+### Architecture
+- 🔗 Microservices
 
-## 📂 **How to Set Up the Project**
+### Methodology
+- 📋 Scrum
 
-### 1️⃣ **Install Dependencies**
+## 🎯 Objective
+The project aims to streamline HR management and attendance tracking while providing a seamless and user-friendly platform for all stakeholders.
 
-#### **Frontend (Web)**  
-Navigate to the `frontend` folder and install dependencies:
+## ⚙️ Install Dependencies
+
+### Frontend (Web)
+Navigate to the frontend folder and install dependencies:
 ```bash
 cd frontend
 npm install
 ```
 
-#### **Backend**  
-Navigate to the `backend` folder and install dependencies:
+### Backend
+Navigate to the backend folder and install dependencies:
 ```bash
 cd backend
 ./mvnw install
 ```
 
-#### **Mobile**  
-Navigate to the `mobile` folder and install dependencies:
+### Mobile
+Navigate to the mobile folder and install dependencies:
 ```bash
 cd mobile
 npm install
 ```
 
----
+## 3️⃣ Configure Environments
 
-### 2️⃣ **Configure Environments**
+### Backend
+Copy the `.env.example` file and rename it to `.env`:
+```bash
+cp .env.example .env
+```
 
-#### **Backend**
-- Copy the `.env.example` file and rename it to `.env`:  
-  ```bash
-  cp .env.example .env
-  ```
-- Configure database settings in the `.env` file:
-  ```env
-  DB_CONNECTION=mysql
-  DB_HOST=127.0.0.1
-  DB_PORT=3306
-  DB_DATABASE=hr_manager
-  DB_USERNAME=root
-  DB_PASSWORD=yourpassword
-  ```
+Configure database settings in the `.env` file:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=hr_manager
+DB_USERNAME=root
+DB_PASSWORD=yourpassword
+```
 
-#### **Frontend**
-- Update `environment.ts` with backend API settings:
-  ```typescript
-  export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:8080/api'
-  };
-  ```
+### Frontend
+Configure the `environment.ts` file with the backend API settings:
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080/api'
+};
+```
 
----
+## 4️⃣ Prepare the Database
+Run migrations:
+```bash
+./mvnw spring-boot:run
+```
 
-### 3️⃣ **Prepare the Database**
-- Run migrations:
-  ```bash
-  ./mvnw spring-boot:run
-  ```
-- (Optional) Populate data using seeders if available.
+Populate data using seeders (if available).
 
----
+## 5️⃣ Start the Project
 
-### 4️⃣ **Start the Project**
-
-#### **Backend**
+### Backend
 Run the Spring Boot server:
 ```bash
 ./mvnw spring-boot:run
 ```
 
-#### **Frontend**
+### Frontend
 Run the Angular development server:
 ```bash
 cd frontend
 ng serve
 ```
 
-#### **Mobile**
+### Mobile
 Start the React Native application:
 ```bash
 cd mobile
 npx react-native run-android
 ```
 
----
+## 6️⃣ Access the Application
 
-### 5️⃣ **Access the Application**
-- **Frontend**: [http://localhost:4200](http://localhost:4200)  
-- **Backend API**: [http://localhost:8080](http://localhost:8080)  
-- **Mobile**: Use an emulator or connected Android device.
+### Frontend
+Open your browser and go to:
+```
+http://localhost:4200
+```
 
----
+### Backend
+The backend API is available at:
+```
+http://localhost:8080
+```
 
-## 🚀 **Features to Test**
-- 🕐 Online attendance tracking and history.  
-- 📅 Submit and review leave requests.  
-- 🗂️ Manage user profiles and work schedules.  
-- 💼 Apply for job openings as a candidate.  
+### Mobile
+Use an emulator or connected Android device to test the application.
+
+## 🚀 Features to Test
+
+- 🕐 Online attendance tracking and history.
+- 📅 Submit and review leave requests.
+- 🗂️ Manage user profiles and work schedules.
+- 💼 Apply for job openings as a candidate.
 - 🔔 Notifications for employees and administrators.
 
----
+## 🖼️ Screenshots
 
-## 🖼️ **Screenshots**
+### 📱 Mobile Interface - Authentication
 
-### 📱 Mobile Interface
-- **Authentication**  
-  ![Mobile Authentication](https://github.com/user-attachments/assets/placeholder-mobile-authentication)  
+### 🖥️ Web Interface - User Management
 
-### 🖥️ Web Interface
-- **User Management**  
-  ![User Management](https://github.com/user-attachments/assets/placeholder-user-management)  
-- **Profile View**  
-  ![Profile View](https://github.com/user-attachments/assets/placeholder-profile-view)  
-- **Work Schedules**  
-  ![Work Schedules](https://github.com/user-attachments/assets/placeholder-work-schedules)  
-- **Attendance Records**  
-  ![Attendance Records](https://github.com/user-attachments/assets/placeholder-attendance-records)  
-- **Leave Requests**  
-  ![Leave Requests](https://github.com/user-attachments/assets/placeholder-leave-requests)  
-- **Job Applications**  
-  ![Job Applications](https://github.com/user-attachments/assets/placeholder-job-applications)  
+### 🖥️ Web Interface - Profile View
 
----
+### 🖥️ Web Interface - Work Schedules
 
-## 🤝 **Contributors**
-- **[Charfeddine FREDJ](https://github.com/CharfeddineFredj)**  
+### 📱 Mobile Interface - Manage Work Schedules
 
----
+### 🖥️ Web Interface - Attendance Records
 
-## 📄 **License**
-This project is licensed under the **MIT License**.
+### 📱 Mobile Interface - Record Attendance
+
+### 🖥️ Web Interface - Leave Requests
+
+### 🖥️ Web Interface - Job Applications
